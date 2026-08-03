@@ -1,0 +1,898 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  
+  <!-- Primary Meta Tags -->
+  <!-- 这里只是meta info -->
+  <!-- TODO: Replace with your paper title and author names -->
+  <meta name="title" content="Fun-ASR v1.5: 30B参数MoE架构端到端语音识别大模型">
+  <!-- TODO: Write a compelling 150-160 character description of your research -->
+  <meta name="description" content="Fun-ASR v1.5 是阿里云通义实验室推出的30B参数MoE架构端到端语音识别大模型，支持30种语言高精度识别，覆盖中文七大方言与20余种口音，专项优化古诗词诵读识别，显著提升标点预测与ITN效果，v1.5聚焦听得更全、听得更准、写得更规范三大目标。">
+  <!-- TODO: Add 5-10 relevant keywords for your research area -->
+  <meta name="keywords" content="Multilingual, Fun-ASR, v1.5, MoE, Dialect, Poetry, ITN">
+  <!-- TODO: List all authors -->
+  <meta name="author" content="Tongyi Fun Team">
+  <meta name="robots" content="index, follow">
+  <meta name="language" content="English">
+  
+  <!-- Open Graph / Facebook -->
+  <meta property="og:type" content="article">
+  <!-- TODO: Replace with your institution or lab name -->
+  <meta property="og:site_name" content="INSTITUTION_OR_LAB_NAME">
+  <!-- TODO: Same as paper title above -->
+  <meta property="og:title" content="PAPER_TITLE">
+  <!-- TODO: Same as description above -->
+  <meta property="og:description" content="BRIEF_DESCRIPTION_OF_YOUR_RESEARCH_CONTRIBUTION_AND_FINDINGS">
+  <!-- TODO: Replace with your actual website URL -->
+  <meta property="og:url" content="https://YOUR_DOMAIN.com/YOUR_PROJECT_PAGE">
+  <!-- TODO: Create a 1200x630px preview image and update path -->
+  <meta property="og:image" content="https://YOUR_DOMAIN.com/static/images/social_preview.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="PAPER_TITLE - Research Preview">
+  <meta property="article:published_time" content="2024-01-01T00:00:00.000Z">
+  <meta property="article:author" content="FIRST_AUTHOR_NAME">
+  <meta property="article:section" content="Research">
+  <meta property="article:tag" content="KEYWORD1">
+  <meta property="article:tag" content="KEYWORD2">
+
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image">
+  <!-- TODO: Replace with your lab/institution Twitter handle -->
+  <meta name="twitter:site" content="@YOUR_TWITTER_HANDLE">
+  <!-- TODO: Replace with first author's Twitter handle -->
+  <meta name="twitter:creator" content="@AUTHOR_TWITTER_HANDLE">
+  <!-- TODO: Same as paper title above -->
+  <meta name="twitter:title" content="PAPER_TITLE">
+  <!-- TODO: Same as description above -->
+  <meta name="twitter:description" content="BRIEF_DESCRIPTION_OF_YOUR_RESEARCH_CONTRIBUTION_AND_FINDINGS">
+  <!-- TODO: Same as social preview image above -->
+  <meta name="twitter:image" content="https://YOUR_DOMAIN.com/static/images/social_preview.png">
+  <meta name="twitter:image:alt" content="PAPER_TITLE - Research Preview">
+
+  <!-- Academic/Research Specific -->
+  <meta name="citation_title" content="PAPER_TITLE">
+  <meta name="citation_author" content="FIRST_AUTHOR_LAST, FIRST_AUTHOR_FIRST">
+  <meta name="citation_author" content="SECOND_AUTHOR_LAST, SECOND_AUTHOR_FIRST">
+  <meta name="citation_publication_date" content="2024">
+  <meta name="citation_conference_title" content="CONFERENCE_NAME">
+  <meta name="citation_pdf_url" content="https://YOUR_DOMAIN.com/static/pdfs/paper.pdf">
+  
+  <!-- Additional SEO -->
+  <meta name="theme-color" content="#2563eb">
+  <meta name="msapplication-TileColor" content="#2563eb">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="default">
+  
+  <!-- Preconnect for performance -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preconnect" href="https://ajax.googleapis.com">
+  <link rel="preconnect" href="https://documentcloud.adobe.com">
+  <link rel="preconnect" href="https://cdn.jsdelivr.net">
+
+
+  <!-- Fun-ASR: 通义百聆语音识别大模型页面标题 -->
+  <title>Fun-ASR: Tongyi Bailin Speech Recognition Model - Alibaba Tongyi Lab</title>
+  
+  <!-- Favicon and App Icons -->
+  <link rel="icon" type="image/x-icon" href="static/images/tongyi.ico">
+  <link rel="apple-touch-icon" href="static/images/tongyi.ico">
+  
+  <!-- Critical CSS - Load synchronously -->
+  <link rel="stylesheet" href="static/css/bulma.min.css">
+  <link rel="stylesheet" href="static/css/index.css">
+  
+  <!-- Non-critical CSS - Load asynchronously -->
+  <link rel="preload" href="static/css/bulma-carousel.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <link rel="preload" href="static/css/bulma-slider.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <link rel="preload" href="static/css/fontawesome.all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <link rel="preload" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  
+  <!-- Fallback for browsers that don't support preload -->
+  <noscript>
+    <link rel="stylesheet" href="static/css/bulma-carousel.min.css">
+    <link rel="stylesheet" href="static/css/bulma-slider.min.css">
+    <link rel="stylesheet" href="static/css/fontawesome.all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+  </noscript>
+  
+  <!-- Fonts - Optimized loading -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  
+  <!-- Defer non-critical JavaScript -->
+  <script defer src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script defer src="https://documentcloud.adobe.com/view-sdk/main.js"></script>
+  <script defer src="static/js/fontawesome.all.min.js"></script>
+  <script defer src="static/js/bulma-carousel.min.js"></script>
+  <script defer src="static/js/bulma-slider.min.js"></script>
+  <script defer src="static/js/index.js"></script>
+  
+  <!-- Structured Data for Academic Papers -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "ScholarlyArticle",
+    "headline": "PAPER_TITLE",
+    "description": "BRIEF_DESCRIPTION_OF_YOUR_RESEARCH_CONTRIBUTION_AND_FINDINGS",
+    "author": [
+      {
+        "@type": "Person",
+        "name": "Tongyi Fun Team",
+        "affiliation": {
+          "@type": "Organization",
+          "name": "Alibaba Group"
+        }
+      }
+    ],
+    "datePublished": "2024-01-01",
+    "publisher": {
+      "@type": "Organization",
+      "name": "CONFERENCE_OR_JOURNAL_NAME"
+    },
+    "url": "https://YOUR_DOMAIN.com/YOUR_PROJECT_PAGE",
+    "image": "https://YOUR_DOMAIN.com/static/images/social_preview.png",
+    "keywords": ["KEYWORD1", "KEYWORD2", "KEYWORD3", "machine learning", "computer vision"],
+    "abstract": "FULL_ABSTRACT_TEXT_HERE",
+    "citation": "BIBTEX_CITATION_HERE",
+    "isAccessibleForFree": true,
+    "license": "https://creativecommons.org/licenses/by/4.0/",
+    "mainEntity": {
+      "@type": "WebPage",
+      "@id": "https://YOUR_DOMAIN.com/YOUR_PROJECT_PAGE"
+    },
+    "about": [
+      {
+        "@type": "Thing",
+        "name": "RESEARCH_AREA_1"
+      },
+      {
+        "@type": "Thing", 
+        "name": "RESEARCH_AREA_2"
+      }
+    ]
+  }
+  </script>
+  
+  <!-- Website/Organization Structured Data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "Alibaba Group",
+    "url": "https://www.alibaba.com",
+    "logo": "https://YOUR_DOMAIN.com/static/images/favicon.ico",
+    "sameAs": [
+      "https://twitter.com/alibaba_group",
+      "https://github.com/alibaba"
+    ]
+  }
+  </script>
+</head>
+<body>
+
+
+  <!-- Scroll to Top Button -->
+  <button class="scroll-to-top" onclick="scrollToTop()" title="Scroll to top" aria-label="Scroll to top">
+    <i class="fas fa-chevron-up"></i>
+  </button>
+
+  <!-- Language Switcher -->
+  <div class="language-switcher">
+    <button class="lang-btn active" data-lang="en">EN</button>
+    <span class="lang-divider">|</span>
+    <button class="lang-btn" data-lang="zh">中文</button>
+  </div>
+
+  <!-- More Works Dropdown -->
+
+
+  <main id="main-content">
+  <section class="hero">
+    <div class="hero-body">
+      <div class="container is-max-desktop">
+        <div class="columns is-centered">
+          <div class="column has-text-centered">
+            <!-- Fun-ASR项目标题 -->
+            <h1 class="title is-1 publication-title">
+              <span class="lang-en">Fun-ASR v1.5: End-to-End Speech Recognition Large Model with 30B MoE Architecture</span>
+              <span class="lang-zh">Fun-ASR v1.5：30B参数MoE架构端到端语音识别大模型</span>
+            </h1>
+            <!-- Company Logo -->
+            <div class="company-logo" style="margin: 1.5rem 0;">
+              <a href="https://tongyi.aliyun.com/landing?family=fun" target="_blank">
+                <img src="static/images/tongyi_fun_tangle.png" class="lang-en" alt="ICON EN" width="35%"/>
+                <img src="static/images/tongyi_fun_tangle_zh.png" class="lang-zh" alt="ICON ZH" width="35%"/>
+              </a>
+            </div>
+                  <div class="column has-text-centered">
+                    <div class="publication-links">
+                        <!-- GitHub Repository -->
+                      <span class="link-block">
+                        <a href="https://github.com/FunAudioLLM/Fun-ASR" target="_blank"
+                        class="external-link button is-normal is-rounded is-dark">
+                        <span class="icon">
+                          <i class="fab fa-github"></i>
+                        </span>
+                        <span>Code</span>
+                      </a>
+                    </span>
+
+                    <!-- Paper -->
+                    <span class="link-block">
+                      <a href="https://arxiv.org/abs/2509.12508" target="_blank"
+                      class="external-link button is-normal is-rounded is-dark">
+                      <span class="icon">
+                        <i class="fas fa-file-pdf"></i>
+                      </span>
+                      <span>Paper</span>
+                    </a>
+                    </span>
+
+
+                    <!-- ModelScope Demo -->
+                    <span class="link-block">
+                      <a href="https://modelscope.cn/studios/iic/FunAudio-ASR" target="_blank"
+                      class="external-link button is-normal is-rounded is-dark">
+                      <span class="icon">
+                        <i class="fas fa-play"></i>
+                      </span>
+                      <span>Demo</span>
+                    </a>
+                  </span>
+
+                <!-- Documentation -->
+                <span class="link-block">
+                  <a href="https://help.aliyun.com/zh/model-studio/recording-file-recognition" target="_blank"
+                  class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                    <i class="fas fa-book"></i>
+                  </span>
+                  <span>Docs</span>
+                </a>
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+
+
+<!-- Paper abstract -->
+<section class="section hero is-light">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">
+          <span class="lang-en">Abstract</span>
+          <span class="lang-zh">摘要</span>
+        </h2>
+        <div class="content has-text-justified">
+          <!-- Fun-ASR项目摘要 -->
+          <p class="lang-en">
+            Fun-ASR v1.5 is a 30B-parameter MoE-based end-to-end speech recognition large model launched by Tongyi Laboratory, trained on tens of millions of hours of real speech data. It systematically advances language coverage, dialect recognition depth, and text output quality. The model supports high-precision recognition of 30 languages, fully covers seven major Chinese dialects and over 20 regional accents, and introduces dedicated optimization for classical Chinese poetry recitation, while significantly improving punctuation prediction and text normalization (ITN). v1.5 focuses on three core objectives — "hear more comprehensively, hear more accurately, write more standardized" — further narrowing the performance gap of speech recognition in complex real-world scenarios, providing a smarter and more reliable speech transcription engine for global communication, regional services, and cultural digitization.
+          </p>
+          <p class="lang-zh">
+            Fun-ASR v1.5 是阿里云通义实验室推出的30B参数MoE架构端到端语音识别大模型，基于数千万小时真实语音数据训练，在语言覆盖广度、方言识别深度以及文本输出质量等维度实现系统性跃升。单模型支持30种语言的高精度识别，全面覆盖中文七大主要方言与20余种地方口音，并首次引入对中国历代古诗词诵读内容的专项优化能力，同时显著提升标点预测与文本归一化（ITN）效果。v1.5版本聚焦"听得更全、听得更准、写得更规范"三大目标，进一步缩小语音识别在复杂真实场景中的性能鸿沟，为全球化沟通、区域化服务与文化数字化提供更智能、更可靠的语音转写引擎。
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- End paper abstract -->
+
+
+<!-- v1.5 Performance Benchmarks -->
+<section class="hero is-small">
+  <div class="hero-body">
+    <div class="container">
+      <div class="columns is-centered">
+        <div class="column is-10">
+          <div id="results-carousel" class="carousel results-carousel">
+            <div class="item">
+              <img src="static/images/opensource_bench.png" alt="Open-Source Multilingual Benchmark" loading="lazy" style="width:100%"/>
+              <h2 class="subtitle has-text-centered">
+                <span class="lang-en">Open-Source Multilingual Benchmark</span>
+                <span class="lang-zh">开源多语言测试集</span>
+              </h2>
+            </div>
+            <div class="item">
+              <img src="static/images/industry_bench.png" alt="Industry Dialect Benchmark" loading="lazy" style="width:100%"/>
+              <h2 class="subtitle has-text-centered">
+                <span class="lang-en">Industry Dialect Benchmark</span>
+                <span class="lang-zh">工业方言测试集</span>
+              </h2>
+            </div>
+          </div>
+        </div>
+      </div> 
+    </div>
+  </div>
+</section>
+
+
+
+
+
+
+
+  
+
+
+
+<section class="section">
+  <div class="container is-max-desktop">
+    
+    <!-- 大标题 -->
+    <h2 class="title is-3 has-text-centered">
+      <span class="lang-en">ASR Capability Demonstrations</span>
+      <span class="lang-zh">ASR 能力演示</span>
+    </h2>
+    <div class="content has-text-centered">
+      <p class="lang-en">Click to play and listen to Fun-ASR's recognition performance in different scenarios.</p>
+      <p class="lang-zh">点击播放试听 Fun-ASR 在不同场景下的识别效果。</p>
+    </div>
+
+    <!-- ========================================== -->
+    <!-- 板块：中文方言识别  -->
+    <!-- ========================================== -->
+    <div class="asr-section">
+      <h3 class="asr-category-title">
+        <span class="lang-en">Chinese Dialect Recognition</span>
+        <span class="lang-zh">中文方言识别</span>
+      </h3>
+      <p class="lang-en">Fun-ASR v1.5 comprehensively supports seven major Chinese dialect systems — Wu, Cantonese, Min, Hakka, Gan, Xiang, and Jin — and covers over 20 regional accents. It also provides dedicated optimization for high-demand local dialects. Trained on over 500,000 hours of real dialect speech data, v1.5 achieves a 56.2% relative reduction in CER compared to the previous version.</p>
+      <p class="lang-zh">Fun-ASR v1.5 不仅完整支持北方官话、吴语、粤语、闽南语、客家话、赣语、湘语七大汉语方言体系，并且支持的口音官话覆盖中原、西南、冀鲁、江淮、兰银、胶辽、东北、北京、港台等 20 多个地区。另外，还针对高需求地方方言进行重点优化。基于超过50万小时真实方言语音数据训练，v1.5 相比上一版本平均字错误率（CER）相对下降 56.2%。</p>
+      <div class="columns is-multiline">
+
+        <!-- 上海话 -->
+        <div class="column is-12">
+          <div class="sample-card">
+            <div class="columns is-vcentered">
+              <div class="column is-3 has-text-centered">
+                <span class="sample-tag" style="margin-bottom: 0.5rem; display: inline-block;">
+                  <span class="lang-en">Shanghai Dialect</span>
+                  <span class="lang-zh">上海话</span>
+                </span>
+                <audio controls style="width: 100%;">
+                  <source src="static/audios/dia_shanghai_v15.wav" type="audio/wav">
+                </audio>
+              </div>
+              <div class="column is-9">
+                <div class="transcript-box">
+                  <span class="transcript-label">
+                    <span class="lang-en">ASR Output</span>
+                    <span class="lang-zh">识别结果</span>
+                  </span>
+                  <p class="transcript-text">移动呢价钿比较实惠但是网速现在还可以反正也勿是老卡个</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 客家话 -->
+        <div class="column is-12">
+          <div class="sample-card">
+            <div class="columns is-vcentered">
+              <div class="column is-3 has-text-centered">
+                <span class="sample-tag" style="margin-bottom: 0.5rem; display: inline-block;">
+                  <span class="lang-en">Hakka</span>
+                  <span class="lang-zh">客家话</span>
+                </span>
+                <audio controls style="width: 100%;">
+                  <source src="static/audios/dia_hakka_v15.wav" type="audio/wav">
+                </audio>
+              </div>
+              <div class="column is-9">
+                <div class="transcript-box">
+                  <span class="transcript-label">
+                    <span class="lang-en">ASR Output</span>
+                    <span class="lang-zh">识别结果</span>
+                  </span>
+                  <p class="transcript-text">可以买点辅导书来，自己假如说会的话也可以教一下小孩子，嗯，现在网络很发达可以。</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 杭州话 -->
+        <div class="column is-12">
+          <div class="sample-card">
+            <div class="columns is-vcentered">
+              <div class="column is-3 has-text-centered">
+                <span class="sample-tag" style="margin-bottom: 0.5rem; display: inline-block;">
+                  <span class="lang-en">Hangzhou Dialect</span>
+                  <span class="lang-zh">杭州话</span>
+                </span>
+                <audio controls style="width: 100%;">
+                  <source src="static/audios/dia_hangzhou_v15.wav" type="audio/wav">
+                </audio>
+              </div>
+              <div class="column is-9">
+                <div class="transcript-box">
+                  <span class="transcript-label">
+                    <span class="lang-en">ASR Output</span>
+                    <span class="lang-zh">识别结果</span>
+                  </span>
+                  <p class="transcript-text">喝姜茶呢可能有效果，但是如果发展成肺炎了，那你还是要用抗生素的噢。</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 湖南话 -->
+        <div class="column is-12">
+          <div class="sample-card">
+            <div class="columns is-vcentered">
+              <div class="column is-3 has-text-centered">
+                <span class="sample-tag" style="margin-bottom: 0.5rem; display: inline-block;">
+                  <span class="lang-en">Hunan Dialect</span>
+                  <span class="lang-zh">湖南话</span>
+                </span>
+                <audio controls style="width: 100%;">
+                  <source src="static/audios/dia_hunan_v15.wav" type="audio/wav">
+                </audio>
+              </div>
+              <div class="column is-9">
+                <div class="transcript-box">
+                  <span class="transcript-label">
+                    <span class="lang-en">ASR Output</span>
+                    <span class="lang-zh">识别结果</span>
+                  </span>
+                  <p class="transcript-text">本来画得挺投入的，结果楼上传来一阵电钻声，把我灵感全吓跑了，还是找邻居商量下吧。</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 苏州话 -->
+        <div class="column is-12">
+          <div class="sample-card">
+            <div class="columns is-vcentered">
+              <div class="column is-3 has-text-centered">
+                <span class="sample-tag" style="margin-bottom: 0.5rem; display: inline-block;">
+                  <span class="lang-en">Suzhou Dialect</span>
+                  <span class="lang-zh">苏州话</span>
+                </span>
+                <audio controls style="width: 100%;">
+                  <source src="static/audios/dia_suzhou_v15.wav" type="audio/wav">
+                </audio>
+              </div>
+              <div class="column is-9">
+                <div class="transcript-box">
+                  <span class="transcript-label">
+                    <span class="lang-en">ASR Output</span>
+                    <span class="lang-zh">识别结果</span>
+                  </span>
+                  <p class="transcript-text">平常辰光匣好教教嗯笃捺亨操作手机，因为倷跟得上时代，时代葛进步，倷再会方便。</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 闽南话 -->
+        <div class="column is-12">
+          <div class="sample-card">
+            <div class="columns is-vcentered">
+              <div class="column is-3 has-text-centered">
+                <span class="sample-tag" style="margin-bottom: 0.5rem; display: inline-block;">
+                  <span class="lang-en">Southern Min</span>
+                  <span class="lang-zh">闽南话</span>
+                </span>
+                <audio controls style="width: 100%;">
+                  <source src="static/audios/dia_minnan_v15.wav" type="audio/wav">
+                </audio>
+              </div>
+              <div class="column is-9">
+                <div class="transcript-box">
+                  <span class="transcript-label">
+                    <span class="lang-en">ASR Output</span>
+                    <span class="lang-zh">识别结果</span>
+                  </span>
+                  <p class="transcript-text">但是一个人若是两三两百箍一百外箍安无算贵吧，吼自助餐啊，啊你也有肉咯也有菜咯也有水果咯也有甜点咯，啥物计有咯。</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <div class="asr-section">
+      <h3 class="asr-category-title">
+        <span class="lang-en">Multilingual Recognition</span>
+        <span class="lang-zh">多语言识别</span>
+      </h3>
+      <p class="lang-en">Fun-ASR v1.5 supports 30 mainstream languages with high-precision recognition, including East Asian & Southeast Asian (Chinese, Japanese, Korean, Vietnamese, Thai, Indonesian, Malay, Filipino), South Asian & Middle Eastern (Hindi, Arabic), and European languages (English, French, German, Spanish, Portuguese, Russian, etc.). It also excels in mixed-language code-switching scenarios without presetting language tags.</p>
+      <p class="lang-zh">Fun-ASR v1.5 支持30种主流语言的精准识别，包括东亚与东南亚（中文、日语、韩语、越南语、泰语、印尼语、马来语、菲律宾语）、南亚与中东（印地语、阿拉伯语）、欧洲主流语言（英语、法语、德语、西班牙语、葡萄牙语、俄语等）。同时在混合语种对话、跨语言自由切换（Code-Switching）场景下表现尤为突出，无需预设语种标签。</p>
+      <div class="columns is-multiline">
+
+        <!-- 日语 -->
+        <div class="column is-12">
+          <div class="sample-card">
+            <div class="columns is-vcentered">
+              <div class="column is-3 has-text-centered">
+                <span class="sample-tag" style="margin-bottom: 0.5rem; display: inline-block;">
+                  <span class="lang-en">Japanese</span>
+                  <span class="lang-zh">日语</span>
+                </span>
+                <audio controls style="width: 100%;">
+                  <source src="static/audios/ml_ja_v15.wav" type="audio/wav">
+                </audio>
+              </div>
+              <div class="column is-9">
+                <div class="transcript-box">
+                  <span class="transcript-label">
+                    <span class="lang-en">ASR Output</span>
+                    <span class="lang-zh">识别结果</span>
+                  </span>
+                  <p class="transcript-text">私に電話してください。番号は139-1234-5678です。</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 韩语 -->
+        <div class="column is-12">
+          <div class="sample-card">
+            <div class="columns is-vcentered">
+              <div class="column is-3 has-text-centered">
+                <span class="sample-tag" style="margin-bottom: 0.5rem; display: inline-block;">
+                  <span class="lang-en">Korean</span>
+                  <span class="lang-zh">韩语</span>
+                </span>
+                <audio controls style="width: 100%;">
+                  <source src="static/audios/ml_ko_v15.wav" type="audio/wav">
+                </audio>
+              </div>
+              <div class="column is-9">
+                <div class="transcript-box">
+                  <span class="transcript-label">
+                    <span class="lang-en">ASR Output</span>
+                    <span class="lang-zh">识别结果</span>
+                  </span>
+                  <p class="transcript-text">저는 이 주제에 따라 한 말씀 드리자면, 사실 저희도 이전에 비슷한 상황을 겪은 적이 있습니다.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 马来语 -->
+        <div class="column is-12">
+          <div class="sample-card">
+            <div class="columns is-vcentered">
+              <div class="column is-3 has-text-centered">
+                <span class="sample-tag" style="margin-bottom: 0.5rem; display: inline-block;">
+                  <span class="lang-en">Malay</span>
+                  <span class="lang-zh">马来语</span>
+                </span>
+                <audio controls style="width: 100%;">
+                  <source src="static/audios/ml_ms_v15.wav" type="audio/wav">
+                </audio>
+              </div>
+              <div class="column is-9">
+                <div class="transcript-box">
+                  <span class="transcript-label">
+                    <span class="lang-en">ASR Output</span>
+                    <span class="lang-zh">识别结果</span>
+                  </span>
+                  <p class="transcript-text">Kejayaan projek ini tidak dapat dipisahkan daripada usaha pasukan, terutamanya kerja keras siang malam oleh jabatan penyelidikan dan pembangunan.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 泰语 -->
+        <div class="column is-12">
+          <div class="sample-card">
+            <div class="columns is-vcentered">
+              <div class="column is-3 has-text-centered">
+                <span class="sample-tag" style="margin-bottom: 0.5rem; display: inline-block;">
+                  <span class="lang-en">Thai</span>
+                  <span class="lang-zh">泰语</span>
+                </span>
+                <audio controls style="width: 100%;">
+                  <source src="static/audios/ml_th_v15.wav" type="audio/wav">
+                </audio>
+              </div>
+              <div class="column is-9">
+                <div class="transcript-box">
+                  <span class="transcript-label">
+                    <span class="lang-en">ASR Output</span>
+                    <span class="lang-zh">识别结果</span>
+                  </span>
+                  <p class="transcript-text">ความหลากหลายทางวัฒนธรรมเป็นทรัพย์สมบัติล้ำค่าของสังคมมนุษย์ และเราควรเคารพและปกป้องประเพณีวัฒนธรรมทั้งหมด</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 西班牙语 -->
+        <div class="column is-12">
+          <div class="sample-card">
+            <div class="columns is-vcentered">
+              <div class="column is-3 has-text-centered">
+                <span class="sample-tag" style="margin-bottom: 0.5rem; display: inline-block;">
+                  <span class="lang-en">Spanish</span>
+                  <span class="lang-zh">西班牙语</span>
+                </span>
+                <audio controls style="width: 100%;">
+                  <source src="static/audios/ml_es_v15.wav" type="audio/wav">
+                </audio>
+              </div>
+              <div class="column is-9">
+                <div class="transcript-box">
+                  <span class="transcript-label">
+                    <span class="lang-en">ASR Output</span>
+                    <span class="lang-zh">识别结果</span>
+                  </span>
+                  <p class="transcript-text">La diversidad cultural es un tesoro invaluable para la sociedad humana, y debemos respetar y proteger todas las tradiciones culturales.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 印尼语 -->
+        <div class="column is-12">
+          <div class="sample-card">
+            <div class="columns is-vcentered">
+              <div class="column is-3 has-text-centered">
+                <span class="sample-tag" style="margin-bottom: 0.5rem; display: inline-block;">
+                  <span class="lang-en">Indonesian</span>
+                  <span class="lang-zh">印尼语</span>
+                </span>
+                <audio controls style="width: 100%;">
+                  <source src="static/audios/ml_id_v15.wav" type="audio/wav">
+                </audio>
+              </div>
+              <div class="column is-9">
+                <div class="transcript-box">
+                  <span class="transcript-label">
+                    <span class="lang-en">ASR Output</span>
+                    <span class="lang-zh">识别结果</span>
+                  </span>
+                  <p class="transcript-text">Mesin pencari perusahaan Google memegang posisi dominan di pasar global.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 英日Code-Switching -->
+        <div class="column is-12">
+          <div class="sample-card">
+            <div class="columns is-vcentered">
+              <div class="column is-3 has-text-centered">
+                <span class="sample-tag" style="margin-bottom: 0.5rem; display: inline-block;">
+                  <span class="lang-en">EN-JA Code-Switching</span>
+                  <span class="lang-zh">英日语种切换</span>
+                </span>
+                <audio controls style="width: 100%;">
+                  <source src="static/audios/ml_en_ja_cs_v15.wav" type="audio/wav">
+                </audio>
+              </div>
+              <div class="column is-9">
+                <div class="transcript-box">
+                  <span class="transcript-label">
+                    <span class="lang-en">ASR Output</span>
+                    <span class="lang-zh">识别结果</span>
+                  </span>
+                  <p class="transcript-text">We've all had that experience of finally visiting a place we've dreamed about for years, only to find that it doesn't quite live up to our expectations. There's even a term for this in one of the most visited cities in the world, Paris Syndrome.何年も前から行きたかった場所をやっと訪れてみたら、思っていたほどではなかったという経験は誰しもあることだと思います。</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+    <!-- ========================================== -->
+    <!-- 板块：古诗词识别  -->
+    <!-- ========================================== -->
+    <div class="asr-section">
+      <h3 class="asr-category-title">
+        <span class="lang-en">Classical Chinese Poetry Recognition</span>
+        <span class="lang-zh">古诗词识别专项优化</span>
+      </h3>
+      <p class="lang-en">Fun-ASR v1.5 introduces dedicated optimization for classical Chinese poetry recitation. Unlike modern spoken language, classical poetry poses unique challenges: concise classical grammar with omitted subjects, predicates, and objects; strict rhyming and fixed rhythmic patterns (e.g., five-character and seven-character regulated verse); frequent use of allusions, variant characters, and words with shifted meanings across eras; and non-natural speech features such as elongated tones, deliberate pauses, and chanting rhythms. In internal evaluation, v1.5 achieves a character-level accuracy of 97% on classical poetry.</p>
+      <p class="lang-zh">Fun-ASR v1.5 对中文古诗词识别进行了专项优化。不同于现代口语，古诗词具有文言语法简练、押韵严格节奏固定、多用典故异体字古今异义词、诵读时存在拖腔停顿吟咏等非自然语流特征等挑战。在内部评测集中，v1.5 对古诗词的字符级准确率达到 97%。</p>
+      <div class="columns is-multiline">
+
+        <!-- 蓬山此去无多路 -->
+        <div class="column is-12">
+          <div class="sample-card">
+            <div class="columns is-vcentered">
+              <div class="column is-3 has-text-centered">
+                <span class="sample-tag" style="margin-bottom: 0.5rem; display: inline-block;">
+                  <span class="lang-en">Classical Poetry</span>
+                  <span class="lang-zh">古诗词</span>
+                </span>
+                <audio controls style="width: 100%;">
+                  <source src="static/audios/poetry_pengshan_v15.wav" type="audio/wav">
+                </audio>
+              </div>
+              <div class="column is-9">
+                <div class="transcript-box">
+                  <span class="transcript-label">
+                    <span class="lang-en">ASR Output</span>
+                    <span class="lang-zh">识别结果</span>
+                  </span>
+                  <p class="transcript-text">蓬山此去无多路，青鸟殷勤为探看。</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 子夏曰 -->
+        <div class="column is-12">
+          <div class="sample-card">
+            <div class="columns is-vcentered">
+              <div class="column is-3 has-text-centered">
+                <span class="sample-tag" style="margin-bottom: 0.5rem; display: inline-block;">
+                  <span class="lang-en">Classical Text</span>
+                  <span class="lang-zh">古文</span>
+                </span>
+                <audio controls style="width: 100%;">
+                  <source src="static/audios/poetry_zixia_v15.wav" type="audio/wav">
+                </audio>
+              </div>
+              <div class="column is-9">
+                <div class="transcript-box">
+                  <span class="transcript-label">
+                    <span class="lang-en">ASR Output</span>
+                    <span class="lang-zh">识别结果</span>
+                  </span>
+                  <p class="transcript-text">子夏曰，博学而笃志，切问而近思，仁在其中矣。</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- ========================================== -->
+    <!-- 板块：标点预测与ITN  -->
+    <!-- ========================================== -->
+    <div class="asr-section">
+      <h3 class="asr-category-title">
+        <span class="lang-en">Smarter Punctuation & Enhanced ITN</span>
+        <span class="lang-zh">文本输出更规范、更易用</span>
+      </h3>
+
+      <!-- 标点预测 -->
+      <h4 style="margin-top: 1rem;">
+        <span class="lang-en">1. Smarter Punctuation Prediction</span>
+        <span class="lang-zh">1. 标点预测更加智能</span>
+      </h4>
+      <p class="lang-en">The model automatically inserts commas, periods, question marks, exclamation marks, etc., based on contextual semantics, making transcription results closer to written expression. For example:</p>
+      <p class="lang-zh">模型基于上下文语义自动插入逗号、句号、问号、感叹号等标点，使转写结果接近书面表达。例如：</p>
+      <div class="transcript-box" style="margin: 0.5rem 0 1.5rem 0;">
+        <p class="transcript-text" style="margin-bottom: 0.3rem;"><strong><span class="lang-en">Input:</span><span class="lang-zh">输入语音：</span></strong> "今天天气怎么样啊我想出去走走但又怕下雨"</p>
+        <p class="transcript-text" style="margin-bottom: 0;"><strong><span class="lang-en">Output:</span><span class="lang-zh">输出文本：</span></strong> "今天天气怎么样啊？我想出去走走，但又怕下雨。"</p>
+      </div>
+
+      <!-- ITN -->
+      <h4 style="margin-top: 1.5rem;">
+        <span class="lang-en">2. Enhanced Text Normalization (ITN)</span>
+        <span class="lang-zh">2. 文本归一化（ITN）表现进一步提升</span>
+      </h4>
+      <p class="lang-en">Automatically converts colloquial non-standard expressions into standard formats:</p>
+      <p class="lang-zh">将口语中的非标准表达自动转换为规范格式：</p>
+      <div class="transcript-box" style="margin: 0.5rem 0;">
+        <p class="transcript-text" style="margin-bottom: 0.3rem;"><strong><span class="lang-en">Numbers:</span><span class="lang-zh">数字：</span></strong> "三千五百六十二" → "3562"</p>
+        <p class="transcript-text" style="margin-bottom: 0.3rem;"><strong><span class="lang-en">Dates:</span><span class="lang-zh">日期：</span></strong> "二零二六年三月二十九号" → "2026年3月29日"</p>
+        <p class="transcript-text" style="margin-bottom: 0.3rem;"><strong><span class="lang-en">Amounts:</span><span class="lang-zh">金额：</span></strong> "五万八千块" → "58000元"</p>
+        <p class="transcript-text" style="margin-bottom: 0;"><strong><span class="lang-en">Phone:</span><span class="lang-zh">电话：</span></strong> "幺三八零零幺三八零零零" → "13800138000"</p>
+      </div>
+      <p style="margin-top: 1rem; font-size: 0.95rem;">
+        <span class="lang-en" style="color: var(--text-secondary);">These improvements significantly reduce post-editing costs, particularly suitable for meeting minutes generation, news interview transcription, and legal records where text standardization is required.</span>
+        <span class="lang-zh" style="color: var(--text-secondary);">这些改进大幅降低后期编辑成本，特别适用于会议纪要生成、新闻采访整理、法律笔录等对文本规范性要求高的场景。</span>
+      </p>
+    </div>
+  </div>
+</section>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!--BibTex citation -->
+  <section class="section" id="BibTeX">
+    <div class="container is-max-desktop content">
+      <div class="bibtex-header">
+        <h2 class="title">
+          <span class="lang-en">BibTeX</span>
+          <span class="lang-zh">文献引用</span>
+        </h2>
+        <button class="copy-bibtex-btn" onclick="copyBibTeX()" title="Copy BibTeX to clipboard">
+          <i class="fas fa-copy"></i>
+          <span class="copy-text">
+            <span class="lang-en">Copy</span>
+            <span class="lang-zh">复制</span>
+          </span>
+        </button>
+      </div>
+      <pre id="bibtex-code"><code>@misc{an2025funasrtechnicalreport,
+      title={Fun-ASR Technical Report}, 
+      author={Keyu An and Yanni Chen and Zhigao Chen and Chong Deng and Zhihao Du and Changfeng Gao and Zhifu Gao and Bo Gong and Xiangang Li and Yabin Li and Ying Liu and Xiang Lv and Yunjie Ji and Yiheng Jiang and Bin Ma and Haoneng Luo and Chongjia Ni and Zexu Pan and Yiping Peng and Zhendong Peng and Peiyao Wang and Hao Wang and Haoxu Wang and Wen Wang and Wupeng Wang and Yuzhong Wu and Biao Tian and Zhentao Tan and Nan Yang and Bin Yuan and Jieping Ye and Jixing Yu and Qinglin Zhang and Kun Zou and Han Zhao and Shengkui Zhao and Jingren Zhou and Yanqiao Zhu},
+      year={2025},
+      eprint={2509.12508},
+      archivePrefix={arXiv},
+      primaryClass={cs.CL},
+      url={https://arxiv.org/abs/2509.12508}, 
+}</code></pre>
+<!-- add a note that this paper will be updated sooner, please update your notation if needed
+<div style="margin-top: 1rem; font-size: 0.9rem; color: var(--text-secondary); font-style: italic;">
+  <span class="lang-en">note: This paper will be updated soon on arXiv. Please update your citation if needed.</span>
+  <span class="lang-zh">注：该论文将在 arXiv 上更新。 如有需要，请更新您的引用。</span>
+</div> -->
+</section>
+<!--End BibTex citation -->
+
+
+  <footer class="footer">
+  <div class="container">
+    <div class="columns is-centered">
+      <div class="column is-8">
+        <div class="content">
+
+          <p>
+            This page was built using the <a href="https://github.com/eliahuhorwitz/Academic-project-page-template" target="_blank">Academic Project Page Template</a> which was adopted from the <a href="https://nerfies.github.io" target="_blank">Nerfies</a> project page.
+            You are free to borrow the source code of this website, we just ask that you link back to this page in the footer. <br> This website is licensed under a <a rel="license"  href="http://creativecommons.org/licenses/by-sa/4.0/" target="_blank">Creative
+            Commons Attribution-ShareAlike 4.0 International License</a>.
+          </p>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<!-- Statcounter tracking code -->
+  
+<!-- You can add a tracker to track page visits by creating an account at statcounter.com -->
+
+    <!-- End of Statcounter Code -->
+
+  </body>
+  </html>
