@@ -3,14 +3,18 @@
 FunAudioLLM is an open-source project for voice understanding and generation models from Tongyi Speech Lab, Alibaba Group. 
 The project includes the demo homepage for each subproject of FunAudioLLM.
 
-SenseVoice & CosyVoice: https://funaudiollm.github.io
+SenseVoice & CosyVoice: https://qwenaudio.github.io
 
-CosyVoice2.0: https://funaudiollm.github.io/cosyvoice2
+CosyVoice2.0: https://qwenaudio.github.io/cosyvoice2
 
-MinMo: https://funaudiollm.github.io/minmo
+CosyVoice3.0: https://qwenaudio.github.io/cosyvoice3
 
-InspireMusic: https://funaudiollm.github.io/inspiremusic
+MinMo: https://qwenaudio.github.io/minmo
 
-Fun-ASR: https://funaudiollm.github.io/funasr
+InspireMusic: https://qwenaudio.github.io/inspiremusic
 
-Fun-Audio-Chat: https://funaudiollm.github.io/funaudiochat
+Fun-ASR: https://qwenaudio.github.io/funasr
+
+Fun-Audio-Chat: https://qwenaudio.github.io/funaudiochat
+
+Qwen-Audio 3.0 TTS: https://qwenaudio.github.io/qwen-audio-3.0-tts
