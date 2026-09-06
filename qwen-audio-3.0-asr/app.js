@@ -171,65 +171,42 @@ audio.addEventListener('ended', () => { document.querySelector('#console-status'
 
 const streamAudio = document.querySelector('#stream-audio');
 const streamPlay = document.querySelector('#stream-play');
-const baselineLiveText = document.querySelector('#baseline-live-text');
-const qwenLiveText = document.querySelector('#qwen-live-text');
-const streamTranscript = '最近北京天气还不错，帮我查一下北京到杭州的航班，然后预定一个明天晚上从北京出发的航班。再帮我看一下明天晚上杭州的酒店，帮我预定一个包含早餐的酒店。';
-const baselineCues = [
-  [0.0, ''], [1.0, '最'], [1.5, '最近北京'], [2.0, '最近北京天气'],
-  [2.5, '最近北京天气还不错'], [3.5, '最近北京天气还不错，'],
-  [4.5, '最近北京天气还不错，帮我查一下'], [5.0, '最近北京天气还不错，帮我查一下北京'],
-  [5.5, '最近北京天气还不错，帮我查一下北京到杭州的'], [6.0, '最近北京天气还不错，帮我查一下北京到杭州的航班'],
-  [6.5, '最近北京天气还不错，帮我查一下北京到杭州的航班，然后'], [7.0, '最近北京天气还不错，帮我查一下北京到杭州的航班，然后预定一个'],
-  [7.5, '最近北京天气还不错，帮我查一下北京到杭州的航班，然后预定一个明天晚上'], [8.5, '最近北京天气还不错，帮我查一下北京到杭州的航班，然后预定一个明天晚上从北京'],
-  [9.5, '最近北京天气还不错，帮我查一下北京到杭州的航班，然后预定一个明天晚上从北京出发的航班'], [11.0, '最近北京天气还不错，帮我查一下北京到杭州的航班，然后预定一个明天晚上从北京出发的航班。'],
-  [12.0, '最近北京天气还不错，帮我查一下北京到杭州的航班，然后预定一个明天晚上从北京出发的航班。再帮我看一下'], [13.0, '最近北京天气还不错，帮我查一下北京到杭州的航班，然后预定一个明天晚上从北京出发的航班。再帮我看一下明天晚上杭州的酒店'],
-  [14.5, '最近北京天气还不错，帮我查一下北京到杭州的航班，然后预定一个明天晚上从北京出发的航班。再帮我看一下明天晚上杭州的酒店，帮我'], [15.5, '最近北京天气还不错，帮我查一下北京到杭州的航班，然后预定一个明天晚上从北京出发的航班。再帮我看一下明天晚上杭州的酒店，帮我预定一个'],
-  [16.5, '最近北京天气还不错，帮我查一下北京到杭州的航班，然后预定一个明天晚上从北京出发的航班。再帮我看一下明天晚上杭州的酒店，帮我预定一个包含'], [17.0, streamTranscript]
-];
-const qwenCues = [
-  [0.0, ''], [1.0, '最近'], [1.5, '最近北京'], [2.0, '最近北京天气还不'], [2.5, '最近北京天气还不错'], [3.0, '最近北京天气还不错。'],
-  [4.5, '最近北京天气还不错，帮我查一下'], [5.0, '最近北京天气还不错，帮我查一下北京'], [5.5, '最近北京天气还不错，帮我查一下北京到杭州的航班'],
-  [6.5, '最近北京天气还不错，帮我查一下北京到杭州的航班，然后'], [7.0, '最近北京天气还不错，帮我查一下北京到杭州的航班，然后预定一个明天'], [7.5, '最近北京天气还不错，帮我查一下北京到杭州的航班，然后预定一个明天晚上'],
-  [8.5, '最近北京天气还不错，帮我查一下北京到杭州的航班，然后预定一个明天晚上从北京'], [9.5, '最近北京天气还不错，帮我查一下北京到杭州的航班，然后预定一个明天晚上从北京出发'], [10.5, '最近北京天气还不错，帮我查一下北京到杭州的航班，然后预定一个明天晚上从北京出发的航班。'],
-  [11.5, '最近北京天气还不错，帮我查一下北京到杭州的航班，然后预定一个明天晚上从北京出发的航班。再帮我看一下'], [12.0, '最近北京天气还不错，帮我查一下北京到杭州的航班，然后预定一个明天晚上从北京出发的航班。再帮我看一下明天晚上'], [13.0, '最近北京天气还不错，帮我查一下北京到杭州的航班，然后预定一个明天晚上从北京出发的航班。再帮我看一下明天晚上杭州的酒店'],
-  [14.0, '最近北京天气还不错，帮我查一下北京到杭州的航班，然后预定一个明天晚上从北京出发的航班。再帮我看一下明天晚上杭州的酒店，帮我预定一个'], [15.0, '最近北京天气还不错，帮我查一下北京到杭州的航班，然后预定一个明天晚上从北京出发的航班。再帮我看一下明天晚上杭州的酒店，帮我预定一个包含'], [16.0, streamTranscript]
-];
-
-function textAtCue(cues, time) {
-  let text = '';
-  for (const [cueTime, cueText] of cues) {
-    if (time < cueTime) break;
-    text = cueText;
-  }
-  return text;
-}
-
 function formatAudioTime(seconds) {
   if (!Number.isFinite(seconds)) return '0:00';
   return `${Math.floor(seconds / 60)}:${String(Math.floor(seconds % 60)).padStart(2, '0')}`;
 }
 
+// The displayed text is encoded from the source video frames. The media clock
+// drives both picture and converted audio; there is no estimated cue schedule.
 function updateStreamingTranscript() {
-  if (!streamAudio.duration) {
-    baselineLiveText.textContent = '';
-    qwenLiveText.textContent = '';
-    document.querySelector('#stream-track-progress').style.width = '0%';
-    return;
-  }
-  const progress = streamAudio.currentTime / streamAudio.duration;
-  qwenLiveText.textContent = textAtCue(qwenCues, streamAudio.currentTime);
-  baselineLiveText.textContent = textAtCue(baselineCues, streamAudio.currentTime);
+  const progress = streamAudio.duration ? streamAudio.currentTime / streamAudio.duration : 0;
   document.querySelector('#stream-track-progress').style.width = `${progress * 100}%`;
   document.querySelector('#stream-current').textContent = formatAudioTime(streamAudio.currentTime);
 }
-
+let streamAnimationFrame;
+function animateStreamProgress() {
+  updateStreamingTranscript();
+  if (!streamAudio.paused && !streamAudio.ended) streamAnimationFrame = requestAnimationFrame(animateStreamProgress);
+}
 streamAudio.addEventListener('loadedmetadata', () => { document.querySelector('#stream-duration').textContent = formatAudioTime(streamAudio.duration); updateStreamingTranscript(); });
 streamAudio.addEventListener('timeupdate', updateStreamingTranscript);
-streamAudio.addEventListener('play', () => { streamPlay.textContent = 'Ⅱ'; document.querySelector('.streaming-player').classList.add('is-playing'); });
-streamAudio.addEventListener('pause', () => { streamPlay.textContent = '▶'; document.querySelector('.streaming-player').classList.remove('is-playing'); });
-streamAudio.addEventListener('ended', () => { baselineLiveText.textContent = streamTranscript; qwenLiveText.textContent = streamTranscript; });
+streamAudio.addEventListener('seeked', updateStreamingTranscript);
+streamAudio.addEventListener('play', () => {
+  streamPlay.textContent = 'Ⅱ';
+  document.querySelector('.streaming-player').classList.add('is-playing');
+  cancelAnimationFrame(streamAnimationFrame);
+  animateStreamProgress();
+});
+streamAudio.addEventListener('pause', () => {
+  streamPlay.textContent = '▶';
+  document.querySelector('.streaming-player').classList.remove('is-playing');
+  cancelAnimationFrame(streamAnimationFrame);
+  updateStreamingTranscript();
+});
+streamAudio.addEventListener('ended', updateStreamingTranscript);
 streamPlay.addEventListener('click', async () => {
   if (!streamAudio.paused) { streamAudio.pause(); return; }
+  if (streamAudio.ended) streamAudio.currentTime = 0;
   try { await streamAudio.play(); } catch (_) { streamPlay.setAttribute('aria-label', 'Audio unavailable'); }
 });
 updateStreamingTranscript();

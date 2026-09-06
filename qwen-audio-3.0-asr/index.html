@@ -88,10 +88,10 @@
       <header class="section-header"><div><p class="section-kicker">Fast & streaming</p><h2>Listen while the transcript appears.</h2></div><p>Play the 18-second Beijing-to-Hangzhou request and watch the transcript appear continuously in a clean side-by-side streaming interface.</p></header>
       <div class="video-frame streaming-player">
         <div class="video-topline"><span>Interactive streaming playback</span><b>Doubao Voice Input</b><i>vs</i><b>Qwen-Audio-3.0-ASR</b></div>
-        <div class="streaming-audio-control"><button id="stream-play" type="button" aria-label="Play Beijing to Hangzhou streaming example">▶</button><div><b>Beijing → Hangzhou travel request</b><span>Pitch-shifted demo audio · transcript follows playback</span></div><div class="stream-time"><span id="stream-current">0:00</span><i>/</i><span id="stream-duration">0:18</span></div></div>
-        <div class="video-mock"><div><small>DOUBAO VOICE INPUT</small><p id="baseline-live-text" aria-live="polite"></p><span class="typing-caret"></span></div><div><small>QWEN-AUDIO-3.0-ASR</small><p id="qwen-live-text" aria-live="polite"></p><span class="typing-caret"></span></div></div>
+        <div class="streaming-audio-control"><button id="stream-play" type="button" aria-label="Play Beijing to Hangzhou streaming example">▶</button><div><b>Beijing → Hangzhou travel request</b><span>Voice-timbre adjusted · original comparison replay</span></div><div class="stream-time"><span id="stream-current">0:00</span><i>/</i><span id="stream-duration">0:18</span></div></div>
+        <div class="stream-replay-labels"><span>DOUBAO VOICE INPUT</span><span>QWEN-AUDIO-3.0-ASR</span></div>
+        <video id="stream-audio" class="stream-replay-video" preload="metadata" playsinline src="assets/video/streaming-frame-matched.mp4" aria-label="Original streaming comparison with adjusted voice timbre"></video>
         <div class="stream-track"><span id="stream-track-progress"></span></div>
-        <audio id="stream-audio" preload="metadata" src="assets/audio/streaming-beijing-hangzhou-pitchshift.m4a"></audio>
       </div>
     </section>
 

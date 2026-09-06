@@ -740,3 +740,10 @@ tbody tr:hover { background: #faf8ff; }
   .atlas-player { min-height: 600px; }
   .atlas-player .showcase-selector { grid-template-columns: repeat(2,minmax(0,1fr)); }
 }
+
+/* Text is replayed directly from the original video frames. */
+.streaming-player { min-height: 0; }
+.stream-replay-labels { display: grid; grid-template-columns: 1fr 1fr; background: #171329; }
+.stream-replay-labels span { padding: 26px 3.2% 8px; font: 700 12px ui-monospace,monospace; letter-spacing: .08em; color: #c5b7e8; }
+.stream-replay-labels span + span { border-left: 1px solid #3a3149; }
+.stream-replay-video { display: block; width: 100%; height: auto; background: #171329; }
