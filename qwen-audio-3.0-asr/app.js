@@ -5,16 +5,16 @@ const dialectSamples = [
   { short: '济', location: 'Jinan', name: 'Jinan dialect', sourceText: '济南人常说“宁可磨叽也别急”，急出来的活儿准不沾，慢工出细活嘛。', translation: 'In Jinan, people value taking the time to do careful, dependable work.', file: 'shandong-jinan.m4a' },
   { short: '粤', location: 'Cantonese · Guangzhou', name: 'Cantonese', sourceText: '阿妈煮嘅叉烧饭我食咗两碗。', translation: 'My mother’s char siu rice was so good that I ate two bowls.', file: 'cantonese-guangzhou.m4a' },
   { short: '陕', location: 'Shaanxi · Xi’an', name: 'Shaanxi dialect', sourceText: '剩余里程125公里，预计2小时。', translation: 'There are 125 kilometres remaining, with an estimated travel time of two hours.', file: 'shaanxi-xian.m4a' },
-  { short: '青', location: 'Qingdao', name: 'Qingdao dialect', sourceText: '庄稼人都知道“春争日夏争时”，耽误了农时就耽误了一年，做事不能黏糊。', translation: 'Farmers know that spring work is measured by the day and summer work by the hour. Miss the farming season and you lose a whole year, so there is no time to dawdle.', file: 'qingdao.m4a' },
-  { short: '沪', location: 'Shanghai', name: 'Shanghainese', sourceText: '陆家嘴环路1000号环球金融中心，登高看上海全景最棒。', translation: 'The Shanghai World Financial Center is at 1000 Lujiazui Ring Road. It is the best place to take in a panoramic view of Shanghai from above.', file: 'shanghai.m4a' },
-  { short: '赣', location: 'Nanchang', name: 'Nanchang dialect', sourceText: '3毛5分一斤，这个菜便宜得很。', translation: 'Thirty-five cents per jin—these vegetables are really cheap.', file: 'nanchang.m4a' },
-  { short: '甬', location: 'Ningbo', name: 'Ningbo dialect', sourceText: '我们宁波人早饭喜欢吃宁波年糕、炒咸菜，再来碗咸豆浆，这才是宁波的味道。', translation: 'For breakfast, we Ningbo locals like rice cakes with stir-fried pickled vegetables and a bowl of savory soy milk. That is the true taste of Ningbo.', file: 'ningbo.m4a' },
-  { short: '客', location: 'Hakka', name: 'Hakka', sourceText: '乡村振兴，家乡面貌大变样。', translation: 'Rural revitalization has completely transformed the face of my hometown.', file: 'hakka.m4a' },
-  { short: '杭', location: 'Hangzhou', name: 'Hangzhou dialect', sourceText: '今天上证指数大涨3.1%，突破3300点大关。', translation: 'The Shanghai Composite surged 3.1% today, breaking through the 3,300-point mark.', file: 'hangzhou.m4a' },
+  { short: '青', location: 'Qingdao', name: 'Qingdao dialect', sourceText: '即墨鳌山卫那边海岸线很长，适合骑车子，空气也好。', translation: 'The coastline around Aoshanwei in Jimo is long, making it great for cycling, and the air is fresh.', file: 'qingdao-verified.m4a' },
+  { short: '沪', location: 'Shanghai', name: 'Shanghainese', sourceText: '去外滩的时候，路上要绕开高峰。', translation: 'When heading to the Bund, avoid the rush-hour traffic.', file: 'shanghai-verified.m4a' },
+  { short: '赣', location: 'Nanchang', name: 'Nanchang dialect', sourceText: '向塘铁路编组站是全国最大的编组站之一。', translation: 'Xiangtang Railway Marshalling Yard is one of the largest marshalling yards in China.', file: 'nanchang-verified.m4a' },
+  { short: '甬', location: 'Ningbo', name: 'Ningbo dialect', sourceText: '臭冬瓜是宁波特色，腌半个月就好吃，闻臭吃香。', translation: 'Fermented winter melon is a Ningbo specialty. After half a month of pickling, it smells pungent but tastes delicious.', file: 'ningbo-verified.m4a' },
+  { short: '客', location: 'Hakka', name: 'Hakka', sourceText: '客家娘酒焖猪脚，补身又好吃。', translation: 'Pork trotters braised in Hakka rice wine are both nourishing and delicious.', file: 'hakka-verified.m4a' },
+  { short: '杭', location: 'Hangzhou', name: 'Hangzhou dialect', sourceText: '菜场里蔬菜花样非常多。', translation: 'The market has a tremendous variety of vegetables.', file: 'hangzhou-verified.m4a' },
   { short: '温', location: 'Wenzhou', name: 'Wenzhounese', sourceText: '买沙发还是皮做的还是布做的哪个质量好？', translation: 'When buying a sofa, which has better quality: leather or fabric?', file: 'wenzhou-verified.m4a' },
-  { short: '湘', location: 'Hunan', name: 'Hunan dialect', sourceText: '查一下株洲高铁站今天的班次时刻表，要去接人。', translation: 'Check today’s train schedule at Zhuzhou High-Speed Railway Station. I need to pick someone up.', file: 'hunan.m4a' },
-  { short: '闽', location: 'Fujian', name: 'Fujian dialect', sourceText: '导航去厦门曾厝垵吃海鲜。', translation: 'Navigate to Zengcuo’an in Xiamen for seafood.', file: 'fujian.m4a' },
-  { short: '苏', location: 'Suzhou', name: 'Suzhou dialect', sourceText: '义务教育阶段实行免试就近入学，学区划分将在7月15日前向社会公布。', translation: 'During compulsory education, students are admitted to nearby schools without entrance exams. School-district boundaries will be published before July 15.', file: 'dialects/suzhou.wav' }
+  { short: '湘', location: 'Hunan', name: 'Hunan dialect', sourceText: '湘江中路沿江风光带，晚上散步吹江风，惬意得很。', translation: 'A nighttime walk along the Xiangjiang Middle Road riverside, with the river breeze, is wonderfully relaxing.', file: 'hunan-verified.m4a' },
+  { short: '闽', location: 'Fujian', name: 'Fujian dialect', sourceText: '吃蚵仔煎，蘸一勺甜辣酱。', translation: 'Eat an oyster omelet with a spoonful of sweet chili sauce.', file: 'fujian-verified.m4a' },
+  { short: '苏', location: 'Suzhou', name: 'Suzhou dialect', sourceText: '小时候印象最深的，就是在山塘街看灯会。', translation: 'My strongest childhood memory is watching the lantern festival on Shantang Street.', file: 'suzhou-verified.m4a' }
 ];
 
 const multilingualSamples = [
