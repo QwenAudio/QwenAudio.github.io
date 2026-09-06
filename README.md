@@ -18,3 +18,6 @@ Fun-ASR: https://qwenaudio.github.io/funasr
 Fun-Audio-Chat: https://qwenaudio.github.io/funaudiochat
 
 Qwen-Audio 3.0 TTS: https://qwenaudio.github.io/qwen-audio-3.0-tts
+
+Qwen-Audio-3.0-ASR: https://qwenaudio.github.io/qwen-audio-3.0-asr
+
