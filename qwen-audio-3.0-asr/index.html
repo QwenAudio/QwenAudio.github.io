@@ -1,0 +1,135 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Interactive companion to the Qwen-Audio-3.0-ASR technical report, with multilingual and Chinese-dialect audio, flexible language configuration, evaluation results, hotword customization, contextual recognition, and native polishing examples.">
+  <meta name="theme-color" content="#6d48e5">
+  <title>Qwen-Audio-3.0-ASR</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <div class="page-grid" aria-hidden="true"></div>
+
+  <header class="site-header shell">
+    <a class="brand" href="#top" aria-label="Qwen-Audio-3.0-ASR home">
+      <img src="assets/qwen-logo.png" alt="">
+      <strong>Qwen-Audio-3.0-ASR</strong>
+    </a>
+    <button class="menu-button" type="button" aria-expanded="false" aria-controls="site-nav">Menu</button>
+    <nav id="site-nav" class="site-nav" aria-label="Primary navigation">
+      <a href="#demo">Audio atlas</a>
+      <a href="#results">Results</a>
+      <a href="#examples">Examples</a>
+      <a href="#experience">Model experience</a>
+      <a class="nav-button" href="assets/Qwen_Audio_3_0_ASR_Technical_Report.pdf">Read the report ↗</a>
+    </nav>
+    <button class="locale-toggle" id="locale-toggle" type="button" aria-label="切换为中文" title="切换为中文"><span class="locale-en">EN</span><i></i><span class="locale-zh">中文</span></button>
+  </header>
+
+  <main id="main">
+    <section class="hero shell" id="top">
+      <div class="hero-copy">
+        <h1>Hear more.<br><span>Miss less.</span></h1>
+        <p class="hero-lead">A large-scale, instruction-controlled ASR model for multilingual speech, 16 Chinese dialectal varieties, long-context transcription, and production-grade entity recognition.</p>
+        <div class="hero-actions">
+          <a class="button button-dark" href="#demo"><span aria-hidden="true">▶</span> Explore audio</a>
+          <a class="button button-light" href="#results">Inspect results ↓</a>
+        </div>
+        <dl class="coverage" aria-label="Model coverage">
+          <div><dt>30</dt><dd>languages</dd></div>
+          <div><dt>16</dt><dd>Chinese dialects</dd></div>
+          <div><dt>3B / 35B</dt><dd>active / total params</dd></div>
+        </dl>
+      </div>
+
+      <figure class="hero-overview">
+        <img src="assets/figures/figure-1-overview-hd.png" alt="Overview of Qwen-Audio-3.0-ASR and its production-oriented capabilities">
+        <figcaption><span>Figure 1</span> One instruction-controlled model for multilingual speech, streaming, context, hotwords, entities, and polishing.</figcaption>
+      </figure>
+    </section>
+
+    <section class="proof shell" aria-labelledby="proof-title">
+      <div class="proof-intro"><p class="section-kicker">Reported evaluation</p><h2 id="proof-title">One model,<br>balanced performance.</h2></div>
+      <article class="proof-metric"><strong>9.40<span>%</span></strong><p>Macro CER on the internal 16-dialect evaluation suite.</p></article>
+      <article class="proof-metric"><strong>4.57</strong><p>Macro error rate on Common Voice 15 across the evaluated languages.</p></article>
+      <article class="proof-metric"><strong>15/15</strong><p>Industry domains where the model reports the highest entity recall.</p></article>
+    </section>
+
+    <section class="section section-mist atlas-section" id="demo">
+      <div class="shell">
+        <header class="section-header"><div><p class="section-kicker">Interactive audio atlas</p><h2>Listen across dialects and languages.</h2></div><p>Choose a location on either map to hear the original sample and read its source-language transcript with an English translation.</p></header>
+        <div class="demo-switch atlas-switch" role="tablist" aria-label="Audio map"><button role="tab" aria-selected="true" data-audio-tab="languages">30 world languages</button><button role="tab" aria-selected="false" data-audio-tab="dialects">16 Chinese dialects</button></div>
+        <div class="atlas-layout">
+          <div class="atlas-map" id="atlas-map">
+            <div class="world-map atlas-map-view" id="world-map-view"><div class="map-canvas"><svg id="world-map-svg" class="geographic-map" viewBox="0 0 1000 560" role="img" aria-label="Geographically projected world map with the representative locations of 30 supported languages"><g id="world-country-layer"></g><g id="language-map-points" aria-label="Choose one of 30 supported languages"></g></svg></div><div class="map-controls" aria-label="World map controls"><button type="button" data-map-action="zoom-in" aria-label="Zoom in">+</button><button type="button" data-map-action="zoom-out" aria-label="Zoom out">−</button><button type="button" data-map-action="reset">Reset</button></div><div class="map-count"><strong>30</strong><span>supported languages</span></div></div>
+            <div class="china-map atlas-map-view" id="china-map-view" hidden>
+              <div class="map-canvas"><svg id="china-map-svg" class="geographic-map" viewBox="0 0 1000 560" role="img" aria-label="Geographically projected map of China with provincial boundaries and 16 supported dialect locations"><g id="china-province-layer"></g><g id="dialect-map-points" aria-label="Choose one of 16 Chinese dialects"></g></svg></div><div class="map-controls" aria-label="China map controls"><button type="button" data-map-action="zoom-in" aria-label="Zoom in">+</button><button type="button" data-map-action="zoom-out" aria-label="Zoom out">−</button><button type="button" data-map-action="reset">Reset</button></div><div class="map-count"><strong>16</strong><span>dialectal varieties</span></div>
+            </div>
+          </div>
+          <div class="audio-console atlas-player" id="listen">
+            <div class="console-heading"><span class="window-dots" aria-hidden="true"><i></i><i></i><i></i></span><span class="console-status" id="console-status">Select a location</span></div>
+            <div class="waveform" id="waveform" aria-hidden="true"></div>
+            <div class="sample-current"><div><p class="sample-location" id="sample-location">Japanese · Japan</p><h3 id="sample-name">日本語</h3><p class="sample-transcript" id="sample-transcript"></p><p class="sample-translation" id="sample-translation"></p></div><button class="play-button" id="play-button" type="button" aria-label="Play selected sample">▶</button></div>
+            <div class="sample-progress"><span id="sample-progress"></span></div>
+            <p class="atlas-hint">Choose a marker on the map or a name below.</p>
+            <div class="showcase-selector" id="sample-chooser" aria-label="Choose an audio sample"></div>
+            <audio id="sample-audio" preload="metadata"></audio>
+          </div>
+        </div>
+        <div class="combination-builder atlas-composer" id="language-composer"><p class="section-kicker">Flexible language prompting</p><h3>Combine target languages at runtime.</h3><div class="selected-languages" id="selected-languages"></div><div class="combination-actions"><button type="button" data-combo="zh,ja,en">🇨🇳 + 🇯🇵 + 🇬🇧</button><button type="button" data-combo="zh,fr">🇨🇳 + 🇫🇷</button><button type="button" data-combo="ja,en">🇯🇵 + 🇬🇧</button><button type="button" data-combo="random">Surprise me</button></div><p class="combination-code"><code id="combination-code">language_hints = ["zh", "ja", "en"]</code></p></div>
+        <details class="language-directory"><summary>Browse all 30 supported languages</summary><div class="language-grid" id="language-grid"></div></details>
+        <div class="dialect-evidence"><figure><img src="assets/figures/dialect-cer-hd.png" alt="CER across 16 Chinese dialects"><figcaption>Figure 6 · Recognition accuracy across the same 16 dialect varieties.</figcaption></figure><figure><img src="assets/figures/dialect-consistency.png" alt="Dialect consistency across 16 Chinese dialects"><figcaption>Figure 7 · ASR and AST task-consistency rates.</figcaption></figure></div>
+      </div>
+    </section>
+
+    <section class="section shell streaming-section" id="streaming">
+      <header class="section-header"><div><p class="section-kicker">Fast & streaming</p><h2>Listen while the transcript appears.</h2></div><p>Play the original 18-second Beijing-to-Hangzhou request and watch the transcript appear continuously in a clean side-by-side streaming interface.</p></header>
+      <div class="video-frame streaming-player">
+        <div class="video-topline"><span>Interactive streaming playback</span><b>Industry Baseline</b><i>vs</i><b>Qwen-Audio-3.0-ASR</b></div>
+        <div class="streaming-audio-control"><button id="stream-play" type="button" aria-label="Play Beijing to Hangzhou streaming example">▶</button><div><b>Beijing → Hangzhou travel request</b><span>Original audio · transcript follows playback</span></div><div class="stream-time"><span id="stream-current">0:00</span><i>/</i><span id="stream-duration">0:18</span></div></div>
+        <div class="video-mock"><div><small>INDUSTRY BASELINE</small><p id="baseline-live-text" aria-live="polite"></p><span class="typing-caret"></span></div><div><small>QWEN-AUDIO-3.0-ASR</small><p id="qwen-live-text" aria-live="polite"></p><span class="typing-caret"></span></div></div>
+        <div class="stream-track"><span id="stream-track-progress"></span></div>
+        <audio id="stream-audio" preload="metadata" src="assets/audio/streaming-beijing-hangzhou.m4a"></audio>
+      </div>
+    </section>
+
+    <section class="section shell" id="results">
+      <header class="section-header results-heading"><div><p class="section-kicker">Evaluation evidence</p><h2>Results, where they support the story.</h2></div><p>Each result view answers a specific performance question; the complete reported tables remain available below. Lower CER/WER is better, while higher recall and consistency are better.</p></header>
+      <div class="result-tabs" id="result-tabs" role="tablist" aria-label="Featured evaluation figures"></div>
+      <div class="result-view" id="result-panel" role="tabpanel"><div class="result-figure"><img id="result-image" src="assets/figures/dialect-cer-hd.png" alt="CER comparison across 16 Chinese dialect test sets"></div><aside class="result-copy"><p class="section-kicker" id="result-kicker">Internal dialect suite</p><strong class="result-number" id="result-number">9.40%</strong><h3 id="result-title">Macro CER across 16 dialects</h3><p id="result-description"></p><div class="result-tags" id="result-tags"></div></aside></div>
+      <p class="evaluation-note"><strong>Evaluation note.</strong> Dialect and industry-domain evaluations use internal test sets. Public benchmark results in Panel A are taken from official sources, while API systems in Panel B use a unified evaluation pipeline.</p>
+      <div class="result-details">
+        <details open><summary><span>Table 1</span> Public Chinese and English ASR benchmarks</summary><div class="table-scroll" id="benchmark-table"></div></details>
+        <details><summary><span>Table 2</span> Multilingual benchmark results</summary><div class="table-scroll" id="multilingual-table"></div></details>
+        <details><summary><span>Table 3</span> Hotword recall with and without conditioning</summary><div class="table-scroll" id="hotword-table"></div></details>
+        <details><summary><span>Table 4</span> Long-audio contextual corrections</summary><div class="table-scroll" id="context-table"></div></details>
+      </div>
+    </section>
+
+    <section class="section section-ink" id="examples"><div class="shell">
+      <header class="section-header section-header-light"><div><p class="section-kicker">Samples from the report and launch material</p><h2>See what the controls change.</h2></div><p>Explore context corrections, entity recall, hotword gains, and native polishing without leaving the page.</p></header>
+      <div class="example-switch" role="tablist" aria-label="Example type"><button role="tab" aria-selected="true" data-example-tab="context">Long context</button><button role="tab" aria-selected="false" data-example-tab="hotword">Hotwords</button><button role="tab" aria-selected="false" data-example-tab="entity">Industry entities</button><button role="tab" aria-selected="false" data-example-tab="polishing">Polishing</button></div>
+      <div class="example-panel" id="example-panel"></div>
+    </div></section>
+
+    <section class="section section-ink" id="experience">
+      <div class="shell">
+        <header class="section-header section-header-light"><div><p class="section-kicker">Model experience</p><h2>Choose the deployment profile.</h2></div><p>Open the official Model Studio documentation for short-form, file-transcription, or real-time streaming integration.</p></header>
+        <div class="experience-grid">
+          <a class="experience-card" href="https://help.aliyun.com/zh/model-studio/non-real-time-speech-recognition-for-fun-asr-flash"><span>01 / Short-form</span><h3>Qwen-Audio-3.0-ASR-Flash</h3><p>Speech recognition for audio up to five minutes.</p><b>Open documentation ↗</b></a>
+          <a class="experience-card" href="https://help.aliyun.com/zh/model-studio/fun-asr-recorded-speech-recognition-http-api"><span>02 / File</span><h3>Qwen-Audio-3.0-ASR-Flash-Filetrans</h3><p>Offline transcription for recorded audio files.</p><b>Open documentation ↗</b></a>
+          <a class="experience-card" href="https://help.aliyun.com/zh/model-studio/fun-asr-realtime-websocket-api"><span>03 / Streaming</span><h3>Qwen-Audio-3.0-ASR-Flash-Streaming</h3><p>Real-time speech recognition over WebSocket.</p><b>Open documentation ↗</b></a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer"><div class="shell"><div class="brand footer-brand"><img src="assets/qwen-logo.png" alt=""><strong>Qwen-Audio-3.0-ASR</strong></div></div></footer>
+  <script src="vendor/d3.v7.min.js"></script>
+  <script src="assets/maps/map-data.js"></script>
+  <script src="app.js"></script>
+  <script src="i18n.js"></script>
+</body>
+</html>
