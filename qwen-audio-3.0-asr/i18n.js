@@ -1,5 +1,6 @@
 (() => {
   const zh = {
+    'Streaming':'流式识别','Real-time transcription':'边说边出字',
     'Skip to content':'跳转到正文','Menu':'菜单','Audio atlas':'音频地图','Results':'评测结果','Examples':'能力示例','Model experience':'模型体验','Read the report ↗':'阅读技术报告 ↗',
     'Hear more.':'听见更多。','Miss less.':'识别更准。','A large-scale, instruction-controlled ASR model for multilingual speech, 16 Chinese dialectal varieties, long-context transcription, and production-grade entity recognition.':'面向真实生产场景的大规模指令控制语音识别模型，支持多语种、16 种中文方言、长上下文转写及行业级实体识别。','Explore audio':'试听音频','Inspect results ↓':'查看结果 ↓','languages':'种语言','Chinese dialects':'种中文方言','active / total params':'激活 / 总参数量','Model coverage':'模型覆盖范围',
     'Figure 1':'图 1','One instruction-controlled model for multilingual speech, streaming, context, hotwords, entities, and polishing.':'一个指令控制模型，统一支持多语种语音、流式识别、上下文、热词、实体识别与转写润色。','Reported evaluation':'评测结果','One model,':'一个模型，','balanced performance.':'均衡表现。','Macro CER on the internal 16-dialect evaluation suite.':'内部 16 种方言评测集上的宏平均 CER。','Macro error rate on Common Voice 15 across the evaluated languages.':'Common Voice 15 多语种评测的宏平均错误率。','Industry domains where the model reports the highest entity recall.':'实体召回率取得最佳结果的行业领域数量。','Industry domains where the model reports the outright highest entity recall, with one additional tie.':'模型在 11 个行业领域的实体召回率单独领先，另有 1 个领域并列最优。',
