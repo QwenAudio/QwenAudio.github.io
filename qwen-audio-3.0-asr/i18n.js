@@ -1,5 +1,8 @@
 (() => {
   const zh = {
+    "For WeNetSpeech-net, all results in Panel B and our model's results in Panel A use corrected reference transcripts, following":'对于 WeNetSpeech-net，Panel B 的全部结果及 Panel A 中本模型的结果均使用修正后的参考转写进行评测，参考',
+    'WenetSpeech issue #63':'WenetSpeech issue #63',
+    '. Competing-system results in Panel A are retained as reported in their original sources.':'。Panel A 中竞品的结果保留其原始来源报告的数值。',
     'Streaming':'流式识别','Real-time transcription':'边说边出字',
     'Skip to content':'跳转到正文','Menu':'菜单','Audio atlas':'音频地图','Results':'评测结果','Examples':'能力示例','Model experience':'模型体验','Read the report ↗':'阅读技术报告 ↗',
     'Hear more.':'听见更多。','Miss less.':'识别更准。','A large-scale, instruction-controlled ASR model for multilingual speech, 16 Chinese dialectal varieties, long-context transcription, and production-grade entity recognition.':'面向真实生产场景的大规模指令控制语音识别模型，支持多语种、16 种中文方言、长上下文转写及行业级实体识别。','Explore audio':'试听音频','Inspect results ↓':'查看结果 ↓','languages':'种语言','Chinese dialects':'种中文方言','active / total params':'激活 / 总参数量','Model coverage':'模型覆盖范围',

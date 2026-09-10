@@ -23,7 +23,7 @@
       <a href="#results">Results</a>
       <a href="#examples">Examples</a>
       <a href="#experience">Model experience</a>
-      <a class="nav-button" href="assets/Qwen_Audio_3_0_ASR_Technical_Report.pdf">Read the report ↗</a>
+      <a class="nav-button" href="assets/Qwen_Audio_3_0_ASR_Technical_Report.pdf?v=20260909">Read the report ↗</a>
     </nav>
     <button class="locale-toggle" id="locale-toggle" type="button" aria-label="切换为中文" title="切换为中文"><span class="locale-en">EN</span><i></i><span class="locale-zh">中文</span></button>
   </header>
@@ -100,6 +100,7 @@
       <div class="result-tabs" id="result-tabs" role="tablist" aria-label="Featured evaluation figures"></div>
       <div class="result-view" id="result-panel" role="tabpanel"><div class="result-figure"><img id="result-image" src="assets/figures/dialect-cer-hd.png" alt="CER comparison across 16 Chinese dialect test sets"></div><aside class="result-copy"><p class="section-kicker" id="result-kicker">Internal dialect suite</p><strong class="result-number" id="result-number">9.40%</strong><h3 id="result-title">Macro CER across 16 dialects</h3><p id="result-description"></p><div class="result-tags" id="result-tags"></div></aside></div>
       <p class="evaluation-note"><strong>Evaluation note.</strong> Dialect and industry-domain evaluations use internal test sets. Public benchmark results in Panel A are taken from official sources, while API systems in Panel B use a unified evaluation pipeline.</p>
+      <p class="evaluation-note"><span>For WeNetSpeech-net, all results in Panel B and our model's results in Panel A use corrected reference transcripts, following</span> <a href="https://github.com/wenet-e2e/WenetSpeech/issues/63">WenetSpeech issue #63</a><span>. Competing-system results in Panel A are retained as reported in their original sources.</span></p>
       <div class="result-details">
         <details open><summary><span>Table 1</span> Public Chinese and English ASR benchmarks</summary><div class="table-scroll" id="benchmark-table"></div></details>
         <details><summary><span>Table 2</span> Multilingual benchmark results</summary><div class="table-scroll" id="multilingual-table"></div></details>
@@ -129,7 +130,7 @@
   <footer class="site-footer"><div class="shell"><div class="brand footer-brand"><img src="assets/qwen-logo.png" alt=""><strong>Qwen-Audio-3.0-ASR</strong></div></div></footer>
   <script src="vendor/d3.v7.min.js"></script>
   <script src="assets/maps/map-data.js"></script>
-  <script src="app.js"></script>
-  <script src="i18n.js"></script>
+  <script src="app.js?v=20260910"></script>
+  <script src="i18n.js?v=20260910"></script>
 </body>
 </html>
