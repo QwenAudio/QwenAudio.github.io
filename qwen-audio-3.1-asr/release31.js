@@ -53,10 +53,11 @@
     panel.innerHTML=`<div class="understanding-input31"><p class="section-kicker">${t('LISTEN / ORIGINAL AUDIO','试听 / 原始音频')}</p><h3>${t(...v.label)}</h3><div class="sound-art31" aria-hidden="true">${Array.from({length:44},(_,i)=>`<i style="--h:${16+Math.abs(Math.sin(i*.59)*Math.cos(i*.17))*84}%"></i>`).join('')}</div><audio id="understanding-audio" controls preload="metadata" src="assets/launch31/${v.file}"></audio><p class="demo-note31">${t('Recorded example · supplied output, not live inference','录音示例 · 展示素材输出，非在线推理')}</p></div><div class="understanding-output31"><p class="section-kicker">${t('INSTRUCTION','指令')}</p><p class="task-prompt31">${t(...v.prompt)}</p>${v.options?`<div class="choices31">${v.options.map((o,i)=>`<div class="${i===2?'correct':''}"><b>${String.fromCharCode(65+i)}</b>${t(...o)}</div>`).join('')}</div>`:''}<div class="task-answer31"><p class="section-kicker">${t('MODEL OUTPUT','模型输出')}</p><h4>${t(...v.answer)}</h4>${v.intervals?`<div class="interval-list31">${v.intervals.map((range,i)=>`<button type="button" data-interval="${i}"><code>${range[0]}–${range[1]} s</code> ↗</button>`).join('')}</div>`:''}</div></div>`;
     const media=$('#understanding-audio');
     controls(media);
-    media.addEventListener('play',()=>$('.sound-art31').classList.add('playing'));
-    media.addEventListener('pause',()=>$('.sound-art31').classList.remove('playing'));
+    const soundArt=panel.querySelector('.sound-art31');
+    media.addEventListener('play',()=>soundArt.classList.add('playing'));
+    media.addEventListener('pause',()=>soundArt.classList.remove('playing'));
     panel.querySelectorAll('[data-interval]').forEach(b=>b.addEventListener('click',()=>{media.currentTime=v.intervals[+b.dataset.interval][0];safePlay(media);}));
-    media.addEventListener('timeupdate',()=>panel.querySelectorAll('[data-interval]').forEach(b=>{const [a,z]=v.intervals[+b.dataset.interval];b.classList.toggle('active',media.currentTime>=a&&media.currentTime<z);}));
+    media.addEventListener('timeupdate',()=>{if(!v.intervals || !media.isConnected)return;panel.querySelectorAll('[data-interval]').forEach(b=>{const [a,z]=v.intervals[+b.dataset.interval];b.classList.toggle('active',media.currentTime>=a&&media.currentTime<z);});});
     localize31();
   }
   tabs.addEventListener('click',e=>{const b=e.target.closest('[data-task]');if(b)showTask(+b.dataset.task);});
