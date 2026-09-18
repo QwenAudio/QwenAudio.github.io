@@ -18,12 +18,17 @@ The page also works directly from `index.html`; all runtime assets are local.
 - Industry radar: September 11 update, equal-weight test-set means within each of 15 categories; displayed series C/E/G, with a specified language. 11 outright-leading domains. Category-macro recall 96.94%. Radial positions show gaps to each domain’s best model; labels show absolute recall.
 - The established audio atlas, multilingual samples and dialect samples are reused from the existing project. Representative geographical points are sample locations, not complete language distributions.
 
-All audio interactions are prerecorded example playback, not live model inference. No unpublished API URL or 3.1 report URL is implied. Previous release results remain on the linked 3.0 page.
+All audio interactions are prerecorded example playback, not live model inference. No unpublished API URL or 3.1 report URL is implied.
+
+## Full 3.0 content retained in 3.1
+
+The 3.1 page is additive: it includes the previous audio atlas and dialect evaluation figures, streaming comparison video, context/hotword/entity/polishing examples, all five evaluation tabs, all four detailed benchmark tables, original report download and existing integration links. Original model names and historical evaluation values remain explicitly labeled 3.0. The 3.0 source directory and public URL are unchanged.
 
 ## Files
 
 - `atlas.js`, `assets/maps/`, `vendor/`: inherited interactive maps and audio selector.
 - `release31.js`, `release31.css`: new demos, reported benchmarks, model matrix and bilingual UI.
+- `asr-legacy.js`: original streaming playback, benchmark tables and ASR controls in an isolated scope, sourced from the published 3.0 script.
 - `i18n.js`: inherited atlas translation; release copy has its own locale preference.
 - `assets/launch31/`: new audio examples and purple-themed vector figures.
 
