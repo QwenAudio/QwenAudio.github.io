@@ -1,5 +1,6 @@
 (() => {
   const zh = {
+    'Native transcription polishing · original speech and before-and-after transcripts.':'原生转写润色 · 原始语音与润色前后文字对比。',
     'Industry Voice Input':'友商语音输入法','INDUSTRY VOICE INPUT':'友商语音输入法',
     'Streaming':'流式识别','Real-time transcription':'边说边出字',
     'Skip to content':'跳转到正文','Menu':'菜单','Audio atlas':'音频地图','Results':'评测结果','Examples':'能力示例','Model experience':'模型体验','Read the report ↗':'阅读技术报告 ↗',
