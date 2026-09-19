@@ -173,10 +173,11 @@ document.querySelector('#context-table').innerHTML = makeTable(['Earlier context
 
 function renderExample(kind) {
   const panel = document.querySelector('#example-panel');
+  panel.querySelectorAll('video,audio').forEach(media=>media.pause());
   if (kind === 'context') panel.innerHTML = `<div class="correction-grid">${contextExamples.map(([cue,before,after],i)=>`<article><span>${String(i+1).padStart(2,'0')} · Earlier cue</span><p>${cue}</p><div><s>${before}</s><b>→</b><strong>${after}</strong></div></article>`).join('')}</div>`;
   if (kind === 'hotword') panel.innerHTML = `<div class="example-lead"><div><p class="section-kicker">Hierarchical customization</p><h3>P0 for high-confidence terms. P1 for broader candidates.</h3><p>Across the supplied launch examples, Qwen-Audio-3.1-ASR reaches 99%+ recall on six P0 categories after hotword conditioning.</p></div><div class="table-scroll">${makeTable(['Category','Tier','Doubao-ASR','Fun-ASR-Flash','Qwen-Audio-3.1-ASR'],hotwordRows)}</div></div>`;
   if (kind === 'entity') panel.innerHTML = `<div class="example-lead"><div><p class="section-kicker">Launch examples</p><h3>Long-tail entities across practical domains.</h3><p>Shown values are entity recall (%) from the supplied promotional material.</p><img class="example-visual" src="assets/figures/entity-recall.png" alt="Industry entity recall comparison"></div><div class="table-scroll">${makeTable(['Domain','Doubao-ASR','Fun-ASR-Flash','Qwen-Audio-3.1-ASR'],industryRows)}</div></div>`;
-  if (kind === 'polishing') panel.innerHTML = `<div class="polishing-redesign">
+  if (kind === 'polishing') panel.innerHTML = `<figure class="polishing-video31" id="polishing-demo"><video controls playsinline preload="metadata" poster="assets/video/polishing31-poster.jpg" aria-label="Native transcription polishing demonstration"><source src="assets/video/polishing31.mp4" type="video/mp4"></video><figcaption>Native transcription polishing · original speech and before-and-after transcripts.</figcaption></figure><div class="polishing-redesign">
     <div class="polishing-intro"><p class="section-kicker">Native single-pass polishing</p><h3>Cleaner transcripts,<br>without a rewrite stage.</h3><p>Fillers, repetitions, explicit self-corrections, and formatting noise are handled inside the recognition pass.</p><div class="polish-score-grid"><div><span>Polishing off</span><b>2.53</b><small>Readability</small><b>3.51</b><small>Faithfulness</small></div><div class="metric-highlight"><span>Polishing on · Native</span><b>3.44</b><small>Readability</small><b>3.44</b><small>Faithfulness</small></div><div><span>Qwen3.6-Plus cascade</span><b>3.51</b><small>Readability</small><b>3.47</b><small>Faithfulness</small></div></div></div>
     <div class="polish-transformations">
       <article><span>01 · Filler removal</span><s>Um, and this means that, um, once, uh, it, it, it comes together with a voice recognition.</s><strong>And this means that once it comes together with a voice recognition.</strong></article>
@@ -188,6 +189,9 @@ function renderExample(kind) {
 }
 document.querySelectorAll('[data-example-tab]').forEach(button=>button.addEventListener('click',()=>{document.querySelectorAll('[data-example-tab]').forEach(item=>item.setAttribute('aria-selected',item===button?'true':'false'));renderExample(button.dataset.exampleTab);}));
 renderExample('context');
+function openPolishingDemo(){if(location.hash==='#polishing-demo'){document.querySelector('[data-example-tab="polishing"]').click();document.querySelector('#examples').scrollIntoView({block:'start'});}}
+openPolishingDemo();
+window.addEventListener('hashchange',openPolishingDemo);
 
 
 })();
