@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#faf9fe">
+  <meta name="description" content="Qwen-Audio-3.1-Realtime — towards reliable agentic voice interaction. Explore spoken intelligence, executable actions, and conversational coordination.">
+  <title>Qwen-Audio-3.1-Realtime · Beyond conversation</title>
+  <link rel="icon" href="assets/qwen-logo.png" type="image/png">
+  <link rel="stylesheet" href="styles.css?v=15">
+  <link rel="stylesheet" href="overview.css?v=7">
+  <link rel="stylesheet" href="demo.css?v=40">
+  <script src="app.js?v=40" defer></script>
+  <script src="demo.js?v=32" defer></script>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header class="site-header">
+    <a class="brand" href="#" aria-label="Qwen Audio home"><img class="brand-logo" src="assets/qwen-logo.png" alt=""><span>Qwen-Audio-3.1-Realtime</span></a>
+    <button class="menu-toggle" aria-expanded="false" aria-controls="navigation">Menu <span aria-hidden="true">☰</span></button>
+    <nav id="navigation" aria-label="Main navigation">
+      <a href="#benchmarks">Benchmarks</a><a href="#demos">Demos</a><a href="#agent">Voice Agent</a><a href="#report">Technical Report</a><a href="https://modelstudio.console.alibabacloud.com/ap-southeast-1/model/market/detail/qwen-audio-3.1-realtime-plus?serviceSite=international&amp;ref=list" target="_blank" rel="noopener">Model Studio</a><a href="https://github.com/QwenAudio/qwen-audio-agent" target="_blank" rel="noopener">Harness GitHub</a>
+    </nav>
+    <a class="nav-cta" href="#report">Technical overview <span aria-hidden="true">↗</span></a>
+  </header>
+  <main id="main">
+    <section class="hero wrap" aria-labelledby="hero-title">
+      <div class="release-label"><span class="mini-wave" aria-hidden="true">ıııı</span> INTRODUCING QWEN-AUDIO-3.1-REALTIME</div>
+      <h1 id="hero-title">Beyond conversation.<br><span>Into action.</span></h1>
+      <p class="hero-description">A voice that reasons. An assistant that acts.<br>Bringing spoken intelligence, real-world execution, and natural<br class="desktop-break"> interaction into one continuous conversation.</p>
+      <div class="hero-actions"><a class="button primary" href="#demos">Explore the demos <span aria-hidden="true">↗</span></a><a class="button secondary" href="#benchmarks">See the results <span aria-hidden="true">↓</span></a></div>
+      <div class="hero-signature">Qwen-Audio-3.1-Realtime <span>by Alibaba Token Foundry</span></div>
+
+      <figure class="connected-overview" id="overview">
+        <a href="assets/overview.svg?v=25" target="_blank" rel="noopener" aria-label="Open the seven-capability overview at full resolution">
+          <img src="assets/overview.svg?v=25" width="1600" height="1100" fetchpriority="high" alt="Qwen-Audio-3.1-Realtime at the center of seven connected capabilities: multilingual reasoning, long-context instructions, tool execution, persona and empathy, full-duplex coordination, reliability, and persistent voice agents.">
+        </a>
+      </figure>
+      <p class="overview-note">Model capabilities and system design in one view. Persistent tasks and memory are runtime extensions; matched 3.1 duplex measurements are not yet reported.</p>
+    </section>
+
+    <section class="highlights wrap" aria-label="Selected release results">
+      <div><span class="stat-label">MULTI-TURN INSTRUCTIONS</span><strong>52.21<span>%</span></strong><p>Audio MultiChallenge</p><small>+5.09 percentage points vs. 3.0</small></div>
+      <div><span class="stat-label">SPOKEN TASK EXECUTION</span><strong>82.19<span>%</span></strong><p>τ²-Bench Audio</p><small>+3.59 percentage points vs. 3.0</small></div>
+      <div><span class="stat-label">MULTILINGUAL REASONING</span><strong>88.09<span>%</span></strong><p>14-language QA overall</p><small>+6.40 percentage points vs. 3.0</small></div>
+      <div><span class="stat-label">EMPATHETIC RESPONSE</span><strong>4.03<span>/5</span></strong><p>EchoMind</p><small>+0.33 score points vs. 3.0</small></div>
+    </section>
+
+    <section id="benchmarks" class="section wrap">
+      <div class="section-heading"><span class="eyebrow">MEASURED, NOT JUST DESCRIBED</span><h2>A stronger foundation.<br>A more capable voice agent.</h2><p>Selected results from the technical report. Explore each dimension<br class="desktop-break"> with exact values, metric definitions, and comparison scope.</p></div>
+      <div class="benchmark-toolbar"><div class="tabs" role="tablist" aria-label="Benchmark category"><button role="tab" id="tab-intelligence" aria-controls="benchmark-panel" aria-selected="true" data-tab="intelligence">Intelligence</button><button role="tab" id="tab-action" aria-controls="benchmark-panel" aria-selected="false" tabindex="-1" data-tab="action">Action</button><button role="tab" id="tab-empathy" aria-controls="benchmark-panel" aria-selected="false" tabindex="-1" data-tab="empathy">Persona & empathy</button><button role="tab" id="tab-reliability" aria-controls="benchmark-panel" aria-selected="false" tabindex="-1" data-tab="reliability">Reliability</button><button role="tab" id="tab-multilingual" aria-controls="benchmark-panel" aria-selected="false" tabindex="-1" data-tab="multilingual">Multilingual</button><button role="tab" id="tab-context" aria-controls="benchmark-panel" aria-selected="false" tabindex="-1" data-tab="context">Long context</button></div><button class="table-toggle" aria-pressed="false">Table view</button></div>
+      <div class="chart-legend" aria-label="Chart legend"></div>
+      <div id="benchmark-panel" role="tabpanel" aria-labelledby="tab-intelligence" tabindex="0"><div id="benchmark-charts" class="chart-grid"></div><div id="benchmark-table" class="table-container" hidden></div><p id="benchmark-note" class="benchmark-note"></p></div>
+      <noscript><p>Enable JavaScript for interactive comparisons. Selected 3.1 results: Audio MultiChallenge 52.21%; τ²-Bench Audio 82.19%; multilingual QA 88.09%; EchoMind 4.03/5.</p></noscript>
+      <div class="evidence-note"><span aria-hidden="true">ⓘ</span><p>GPT-Realtime-2 uses low effort unless stated otherwise. Results reflect the report's evaluation settings, not controlled training ablations or statistical significance. A missing result is not treated as zero. S2T results evaluate speech input with text output, not synthesized speech quality.</p></div>
+    </section>
+
+    <section id="demos" class="section demo-section"><div class="wrap">
+      <div class="section-heading"><span class="eyebrow">SEE IT IN A REAL CONVERSATION</span><h2>Four conversations.<br>One continuous interaction.</h2><p>Recorded sessions covering language switching, turn-taking with several<br class="desktop-break"> speakers, tool execution, and spoken expression.</p></div>
+      <div class="demo-tabs" role="tablist" aria-label="Demo category">
+        <button role="tab" id="demo-tab-duplex" aria-controls="demo-panel" aria-selected="true" data-demo="duplex">Full-duplex interaction<span>Multi-party · semantic control</span></button>
+        <button role="tab" id="demo-tab-persona" aria-controls="demo-panel" aria-selected="false" tabindex="-1" data-demo="persona">Persona &amp; empathy<span>Character · emotional response</span></button>
+        <button role="tab" id="demo-tab-action" aria-controls="demo-panel" aria-selected="false" tabindex="-1" data-demo="action">Tool use<span>Execute and follow up</span></button>
+        <button role="tab" id="demo-tab-multilingual" aria-controls="demo-panel" aria-selected="false" tabindex="-1" data-demo="multilingual">Multilingual conversation<span>Chinese · Japanese · Korean</span></button>
+      </div>
+      <div id="demo-panel" role="tabpanel" aria-labelledby="demo-tab-duplex" tabindex="0"></div>
+      <noscript><p class="demo-note">Enable JavaScript to play the demo recordings.</p></noscript>
+    </div></section>
+
+    <section id="agent" class="section wrap agent-section"><div class="agent-intro"><div><span class="eyebrow">BEYOND THE MODEL · A SYSTEM EXTENSION</span><h2>Keep talking.<br><span>The work continues.</span></h2></div><p>A persistent voice-agent runtime keeps the conversation responsive while longer tasks move forward—with explicit state, bounded memory, and results delivered at the right moment.</p></div>
+      <figure class="agent-arch"><img src="assets/persistent-voice-harness.png?v=1" width="2000" height="900" loading="lazy" alt="Persistent voice harness architecture: a foreground continuous-interaction layer with the user, realtime foreground agent, direct tools and bounded context; an orchestration runtime tracking task records and permissions; and a background durable-execution layer with a background agent, tools and environment, and separate stores."></figure>
+      <div class="agent-feature-grid"><article><span>↗</span><h3>Direct or delegated</h3><p>Keep short actions in the foreground. Hand multi-step work to a background executor through an explicit task contract.</p></article><article><span>◎</span><h3>State you can trust</h3><p>Track acceptance, execution, completion, and delivery separately. Follow-up inputs remain linked to the original task.</p></article><article><span>⊞</span><h3>Memory with boundaries</h3><p>Separate user preferences, long-term memory, reference knowledge, and live task state. Current instructions take precedence.</p></article></div>
+      <div class="agent-demos">
+        <h3 class="agent-demos-title">Scenario demos</h3>
+        <div class="demo-tabs" role="tablist" aria-label="Voice agent scenario">
+          <button role="tab" id="agent-tab-cockpit" aria-controls="agent-demo-panel" aria-selected="true" data-agent-demo="cockpit">Smart cockpit<span>Full session · in-car</span></button>
+          <button role="tab" id="agent-tab-service" aria-controls="agent-demo-panel" aria-selected="false" tabindex="-1" data-agent-demo="service">Customer service<span>Full session · call center</span></button>
+          <button role="tab" id="agent-tab-office" aria-controls="agent-demo-panel" aria-selected="false" tabindex="-1" data-agent-demo="office">Office<span>Full session · productivity</span></button>
+        </div>
+        <div id="agent-demo-panel" role="tabpanel" aria-labelledby="agent-tab-cockpit" tabindex="0"></div>
+      </div>
+    </section>
+
+    <section id="report" class="report-section"><div class="wrap report-content"><span class="eyebrow">QWEN-AUDIO-3.1-REALTIME</span><h2>Towards reliable<br>agentic voice interaction.</h2><p>Not just a faster reply. A more capable partner<br class="desktop-break"> in a continuous spoken interaction.</p><p class="report-abstract">Qwen-Audio-3.1-Realtime frames realtime interaction as Think, Act, and Speak &amp; Coordinate — reasoning over evolving requests, executing verifiable actions, and governing how, when, and whether to speak — with evaluation mirroring each layer. Against 3.0, the reported setting gains 5.09 percentage points on Audio MultiChallenge, 6.4 points on the 14-language Big Bench Audio extension, and 3.6 points on τ²-Bench Audio, while multi-turn attack success falls by 54.50 points in Chinese and 40.00 points in English.</p><a class="button primary" href="#agent">Explore the voice agent <span aria-hidden="true">↑</span></a><div class="report-credit">Alibaba Token Foundry · Alibaba Group</div></div></section>
+  </main>
+  <footer class="wrap footer"><a class="brand" href="#"><img class="brand-logo" src="assets/qwen-logo.png" alt=""><span>Qwen-Audio-3.1-Realtime</span></a><span>Qwen-Audio-3.1-Realtime · Technical report preview</span><a href="#main">Back to top ↑</a></footer>
+  <div id="chart-tooltip" class="chart-tooltip" role="tooltip" hidden></div>
+</body>
+</html>
