@@ -73,6 +73,12 @@
     'Full-session recording · in-car smart cockpit scenario.': '完整对话录音 · 车载智能座舱场景',
     'Table view': '表格视图',
     'Chart view': '图表视图',
+    'Interaction Framework': '交互框架',
+    'Model Framework': '模型框架',
+    'Post-Training Pipeline': '后训练流水线',
+    'Self-Evolving Environment Pipeline': '自进化环境流水线',
+    'Persistent Voice Harness Architecture': '持久化语音 Harness 架构',
+    'Asynchronous Tasks Across Conversation Turns': '跨对话轮次的异步任务',
   };
   window.TS = en => (window.LANG === 'zh' && ZH_DICT[en] !== undefined ? ZH_DICT[en] : en);
 
@@ -134,6 +140,14 @@
     '.report-credit': 'Alibaba Token Foundry · 阿里巴巴集团',
     '.footer > span': 'Qwen-Audio-3.1-Realtime · 技术报告预览',
     '.footer > a:last-child': '回到顶部 ↑',
+    '#tech .eyebrow': '技术内幕',
+    '#tech h2': '技术总览',
+    '#tech-tab-interaction': '交互框架',
+    '#tech-tab-model': '模型框架',
+    '#tech-tab-posttrain': '后训练流水线',
+    '#tech-tab-selfevolve': '自进化环境流水线',
+    '#tech-tab-harness': '持久化语音 Harness 架构',
+    '#tech-tab-asyncturns': '跨对话轮次的异步任务',
   };
 
   const OVERVIEW_EN = 'assets/overview.svg?v=25';

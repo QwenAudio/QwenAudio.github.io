@@ -133,6 +133,32 @@ function renderLegend() {
 }
 renderLegend();
 renderBenchmarks(activeCategory);
+const TECH_FIGURES = {
+  interaction: {title: 'Interaction Framework', src: 'assets/tech-interaction-framework.png'},
+  model: {title: 'Model Framework', src: 'assets/tech-model-framework.png'},
+  posttrain: {title: 'Post-Training Pipeline', src: 'assets/tech-post-training.png'},
+  selfevolve: {title: 'Self-Evolving Environment Pipeline', src: 'assets/tech-self-evolving.png'},
+  harness: {title: 'Persistent Voice Harness Architecture', src: 'assets/tech-voice-harness.png'},
+  asyncturns: {title: 'Asynchronous Tasks Across Conversation Turns', src: 'assets/tech-async-turns.png'}
+};
+let activeTech = 'interaction';
+function renderTech(key) {
+  activeTech = key;
+  const panel = document.querySelector('#tech-panel');
+  if (!panel) return;
+  const figure = TECH_FIGURES[key];
+  panel.innerHTML = `<figure class="architecture-figure"><img src="${figure.src}" alt="${TS(figure.title)}" loading="lazy"></figure>`;
+  panel.setAttribute('aria-labelledby', `tech-tab-${key}`);
+  document.querySelectorAll('[data-tech]').forEach(button => {
+    const selected = button.dataset.tech === key;
+    button.setAttribute('aria-selected', String(selected));
+    button.tabIndex = selected ? 0 : -1;
+  });
+}
+document.querySelectorAll('[data-tech]').forEach(button => button.addEventListener('click', () => renderTech(button.dataset.tech)));
+renderTech('interaction');
+window.__rerenderers.push(() => renderTech(activeTech));
+
 window.__rerenderers.push(() => {
   renderBenchmarks(activeCategory);
   const toggleButton = document.querySelector('.table-toggle');

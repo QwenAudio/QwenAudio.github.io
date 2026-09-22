@@ -10,8 +10,8 @@
   <link rel="stylesheet" href="styles.css?v=18">
   <link rel="stylesheet" href="overview.css?v=7">
   <link rel="stylesheet" href="demo.css?v=42">
-  <script src="i18n.js?v=21" defer></script>
-  <script src="app.js?v=46" defer></script>
+  <script src="i18n.js?v=22" defer></script>
+  <script src="app.js?v=47" defer></script>
   <script src="demo.js?v=36" defer></script>
 </head>
 <body>
@@ -46,6 +46,19 @@
       <div><span class="stat-label">SPOKEN TASK EXECUTION</span><strong>82.19<span>%</span></strong><p>τ²-Bench Audio</p><small>+3.59 percentage points vs. 3.0</small></div>
       <div><span class="stat-label">MULTILINGUAL REASONING</span><strong>88.09<span>%</span></strong><p>14-language QA overall</p><small>+6.40 percentage points vs. 3.0</small></div>
       <div><span class="stat-label">EMPATHETIC RESPONSE</span><strong>4.03<span>/5</span></strong><p>EchoMind</p><small>+0.33 score points vs. 3.0</small></div>
+    </section>
+
+    <section id="tech" class="section wrap">
+      <div class="section-heading"><span class="eyebrow">UNDER THE HOOD</span><h2>Technical Overview</h2></div>
+      <div class="demo-tabs" role="tablist" aria-label="Technical diagrams">
+        <button role="tab" id="tech-tab-interaction" aria-controls="tech-panel" aria-selected="true" data-tech="interaction">Interaction Framework</button>
+        <button role="tab" id="tech-tab-model" aria-controls="tech-panel" aria-selected="false" tabindex="-1" data-tech="model">Model Framework</button>
+        <button role="tab" id="tech-tab-posttrain" aria-controls="tech-panel" aria-selected="false" tabindex="-1" data-tech="posttrain">Post-Training Pipeline</button>
+        <button role="tab" id="tech-tab-selfevolve" aria-controls="tech-panel" aria-selected="false" tabindex="-1" data-tech="selfevolve">Self-Evolving Environment Pipeline</button>
+        <button role="tab" id="tech-tab-harness" aria-controls="tech-panel" aria-selected="false" tabindex="-1" data-tech="harness">Persistent Voice Harness Architecture</button>
+        <button role="tab" id="tech-tab-asyncturns" aria-controls="tech-panel" aria-selected="false" tabindex="-1" data-tech="asyncturns">Asynchronous Tasks Across Conversation Turns</button>
+      </div>
+      <div id="tech-panel" role="tabpanel" aria-labelledby="tech-tab-interaction" tabindex="0"></div>
     </section>
 
     <section id="benchmarks" class="section wrap">
