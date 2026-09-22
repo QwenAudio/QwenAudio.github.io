@@ -1,5 +1,9 @@
 (() => {
   const zh = {
+    'Internal dialect ASR':'内部方言 ASR','Internal dialect AST':'内部方言 AST','Public ASR / AST':'开源 ASR / AST','Public dialect benchmarks':'开源方言测试集','Macro semantic sentence accuracy':'宏平均语义句准确率','11 dialects':'11 种方言','Test sets with the lowest CER':'取得最低 CER 的测试集',
+    'Qwen-Audio-3.1-ASR has the lowest CER on 11 of 16 test sets. Equal-weight macro CER: Qwen 10.38%, Doubao-ASR 20.23%, Tencent Hy-ASR-3.0-preview 17.13%.':'Qwen-Audio-3.1-ASR 在 16 个测试集中的 11 个取得最低 CER。等权宏平均 CER：Qwen 为 10.38%，Doubao-ASR 为 20.23%，Tencent Hy-ASR-3.0-preview 为 17.13%。',
+    'Equal-weight mean across 11 dialect test sets. Qwen-Audio-3.1-ASR has the highest semantic sentence accuracy on 10 of 11 sets; Tencent leads on Cantonese.':'对 11 个方言测试集等权平均。Qwen-Audio-3.1-ASR 在其中 10 个测试集取得最高语义句准确率；腾讯在粤语上领先。',
+    'Qwen-Audio-3.1-ASR has the lowest CER on 5 of 9 KeSpeech AST subsets and on WSYue-long ASR. Tencent leads on the other 5 sets. Both tasks report CER; lower is better.':'Qwen-Audio-3.1-ASR 在 9 个 KeSpeech AST 子集中有 5 个取得最低 CER，并在 WSYue-long ASR 上领先；腾讯在其余 5 项上领先。两项任务均报告 CER，越低越好。',
     'Native transcription polishing · original speech and before-and-after transcripts.':'原生转写润色 · 原始语音与润色前后文字对比。',
     'Industry Voice Input':'友商语音输入法','INDUSTRY VOICE INPUT':'友商语音输入法',
     'Streaming':'流式识别','Real-time transcription':'边说边出字',
