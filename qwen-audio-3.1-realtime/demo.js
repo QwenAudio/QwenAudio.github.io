@@ -135,8 +135,8 @@ if (DEMO_ROOT) {
       <div class="lane-legend">${LEGEND_ORDER.filter(key => usedCats(variant).includes(key)).map(key => `<span><i class="sw-${key}"></i>${TS(DUPLEX_CATS[key])}</span>`).join('')}<span><i class="sw-agent"></i>${TS('Assistant turn')}</span></div>
       <div class="timeline" role="img" aria-label="Speech activity timeline: user and assistant channels over ${time(variant.duration)}">
         ${variant.annos ? `<div class="timeline-row anno-row"><span class="timeline-name"></span><div class="anno-track">${variant.annos.map(a => { const seg = variant.user[a.seg]; const mid = (seg[0] + seg[1]) / 2 / variant.duration * 100; return `<div class="anno" style="left:${mid}%"><span class="anno-text">${a.text}</span><span class="anno-arrow"></span></div>`; }).join('')}</div></div>` : ''}
-        <div class="timeline-row"><span class="timeline-name user">Users</span><div class="timeline-track">${lane(variant.user, variant.duration, 'user', variant.userCats)}</div></div>
-        <div class="timeline-row"><span class="timeline-name agent">Assistant</span><div class="timeline-track">${lane(variant.agent, variant.duration, 'agent', variant.agentCats)}</div></div>
+        <div class="timeline-row"><span class="timeline-name user">Users</span><div class="timeline-track">${lane(variant.user, variant.duration, 'user', variant.userCats)}<div class="track-playhead" hidden></div></div></div>
+        <div class="timeline-row"><span class="timeline-name agent">Assistant</span><div class="timeline-track">${lane(variant.agent, variant.duration, 'agent', variant.agentCats)}<div class="track-playhead" hidden></div></div></div>
       </div>
       <div class="timeline-scale">${[0, 0.25, 0.5, 0.75, 1].map(f => `<span>${time(variant.duration * f)}</span>`).join('')}</div>
       <ul class="event-list">${variant.events.map(event =>
@@ -234,8 +234,10 @@ if (DEMO_ROOT) {
       const variant = DEMOS.duplex.variants.find(v => v.id === player.dataset.variant);
       const move = () => {
         if (!audio.duration) return;
+        const pct = `${audio.currentTime / audio.duration * 100}%`;
         head.hidden = false;
-        head.style.left = `${audio.currentTime / audio.duration * 100}%`;
+        head.style.left = pct;
+        player.querySelectorAll('.track-playhead').forEach(ph => { ph.hidden = false; ph.style.left = pct; });
       };
       let raf = 0;
       const tick = () => { move(); raf = requestAnimationFrame(tick); };
