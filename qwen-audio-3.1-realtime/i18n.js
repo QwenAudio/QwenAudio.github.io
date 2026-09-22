@@ -134,7 +134,6 @@
     '#agent-tab-service': '客服<span>完整会话 · 呼叫中心</span>',
     '#agent-tab-office': '办公<span>完整会话 · 生产力</span>',
     '#report h2': '构建更可靠的<br>智能体语音交互',
-    '#report .report-content > p': '我们追求的不止于极速响应，<br class="desktop-break">更致力于在持续的自然对话中，成为您得力的智能伙伴。',
     '.report-abstract': 'Qwen-Audio-3.1-Realtime 将实时交互解构为 Think、Act 与 Speak & Coordinate 三大维度：精准理解动态请求、执行可验证操作，并智能决策发声时机。我们的评测体系亦与此三层架构深度契合。在本次报告的评测配置下，相较于 3.0 版本，新模型在 Audio MultiChallenge 上的得分提升 5.09 个百分点，在涵盖 14 种语言的 Big Bench Audio 扩展集上提升 6.4 个百分点，在 τ²-Bench Audio 上提升 3.6 个百分点；此外，在多轮攻击测试中，中文场景的攻击成功率大幅降低 54.50 个百分点，英文场景降低 40.00 个百分点。',
     '#report .button': '探索语音智能体 <span aria-hidden="true">↑</span>',
     '.report-credit': 'Alibaba Token Foundry · 阿里巴巴集团',
