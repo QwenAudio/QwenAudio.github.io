@@ -119,7 +119,7 @@ if (DEMO_ROOT) {
     const left = `${start / duration * 100}%`;
     const width = `${Math.max((end - start) / duration * 100, 0.7)}%`;
     const cat = cats && cats[index] ? ` cat-${cats[index]}` : '';
-    const label = cats && cats[index] ? ' · ' + DUPLEX_CATS[cats[index]] : '';
+    const label = cats && cats[index] ? ' · ' + TS(DUPLEX_CATS[cats[index]]) : '';
     return `<span class="lane-block ${kind}${cat}" style="left:${left};width:${width}" title="${time(start)}–${time(end)}${label}"></span>`;
   }).join('');
 
@@ -131,8 +131,8 @@ if (DEMO_ROOT) {
         <div class="wave-playhead" hidden></div>
       </div>
       <audio controls preload="metadata" src="${variant.src}"></audio>
-      <p class="demo-caption">${variant.caption}</p>
-      <div class="lane-legend">${LEGEND_ORDER.filter(key => usedCats(variant).includes(key)).map(key => `<span><i class="sw-${key}"></i>${DUPLEX_CATS[key]}</span>`).join('')}<span><i class="sw-agent"></i>Assistant turn</span></div>
+      <p class="demo-caption">${TS(variant.caption)}</p>
+      <div class="lane-legend">${LEGEND_ORDER.filter(key => usedCats(variant).includes(key)).map(key => `<span><i class="sw-${key}"></i>${TS(DUPLEX_CATS[key])}</span>`).join('')}<span><i class="sw-agent"></i>${TS('Assistant turn')}</span></div>
       <div class="timeline" role="img" aria-label="Speech activity timeline: user and assistant channels over ${time(variant.duration)}">
         ${variant.annos ? `<div class="timeline-row anno-row"><span class="timeline-name"></span><div class="anno-track">${variant.annos.map(a => { const seg = variant.user[a.seg]; const mid = (seg[0] + seg[1]) / 2 / variant.duration * 100; return `<div class="anno" style="left:${mid}%"><span class="anno-text">${a.text}</span><span class="anno-arrow"></span></div>`; }).join('')}</div></div>` : ''}
         <div class="timeline-row"><span class="timeline-name user">Users</span><div class="timeline-track">${lane(variant.user, variant.duration, 'user', variant.userCats)}</div></div>
@@ -147,8 +147,8 @@ if (DEMO_ROOT) {
   const views = {
     multilingual: demo => `<div class="ml-full">
       <audio controls preload="none" src="${demo.media.src}"></audio>
-      <div class="demo-tags">${demo.tags.map(tag => `<span>${tag}</span>`).join('')}</div>
-      <p class="demo-channel">${demo.media.channels} · full session</p>
+      <div class="demo-tags">${demo.tags.map(tag => `<span>${TS(tag)}</span>`).join('')}</div>
+      <p class="demo-channel">${TS(demo.media.channels)} · ${TS('full session')}</p>
     </div>
     <div class="ml-list">${demo.transcript.map((turn, index) => {
       const cut = demo.turns[index];
@@ -158,16 +158,18 @@ if (DEMO_ROOT) {
       </div>`;
     }).join('')}</div>`,
     duplex: demo => `<div class="duplex-grid">${demo.variants.map(variant =>
-      `<section class="duplex-card"><h4>${variant.label}</h4>${renderDuplex(variant)}</section>`).join('')}</div>`,
+      `<section class="duplex-card"><h4>${TS(variant.label)}</h4>${renderDuplex(variant)}</section>`).join('')}</div>`,
     action: demo => `<div class="demo-layout action-layout">
       <div class="demo-main"><video controls preload="metadata" playsinline src="${demo.media.src}"></video></div>
       <ol class="action-points">${demo.points.map((point, index) =>
-        `<li><span>0${index + 1}</span><div><b>${point.title}</b><p>${point.text}</p></div></li>`).join('')}</ol>
+        `<li><span>0${index + 1}</span><div><b>${TS(point.title)}</b><p>${TS(point.text)}</p></div></li>`).join('')}</ol>
     </div>`,
     persona: demo => `<div class="persona-grid">${demo.cards.map(card =>
-      `<section class="persona-card"><span class="persona-tag">${card.tag}</span><h4>${card.label}</h4><p>${card.text}</p><audio controls preload="none" src="${card.src}"></audio></section>`).join('')}</div>`
+      `<section class="persona-card"><span class="persona-tag">${TS(card.tag)}</span><h4>${TS(card.label)}</h4><p>${TS(card.text)}</p><audio controls preload="none" src="${card.src}"></audio></section>`).join('')}</div>`
   };
 
+  let currentDemo = 'duplex';
+  let currentAgent = 'cockpit';
   const peakCache = new Map();
   const decodedDuration = new Map();
 
@@ -264,8 +266,9 @@ if (DEMO_ROOT) {
   }
 
   function renderDemo(key) {
+    currentDemo = key;
     const demo = DEMOS[key];
-    DEMO_ROOT.innerHTML = `<header class="demo-header"><h3>${demo.title}</h3><p>${demo.summary}</p></header>${views[key](demo)}<p class="demo-note">${demo.note}</p>`;
+    DEMO_ROOT.innerHTML = `<header class="demo-header"><h3>${TS(demo.title)}</h3><p>${TS(demo.summary)}</p></header>${views[key](demo)}<p class="demo-note">${TS(demo.note)}</p>`;
     DEMO_ROOT.setAttribute('aria-labelledby', `demo-tab-${key}`);
     bindWavePlayers();
     document.querySelectorAll('[data-demo]').forEach(button => {
@@ -294,8 +297,9 @@ if (DEMO_ROOT) {
   const AGENT_PANEL = document.querySelector('#agent-demo-panel');
   function renderAgentDemo(key) {
     if (!AGENT_PANEL) return;
+    currentAgent = key;
     const demo = AGENT_DEMOS[key];
-    AGENT_PANEL.innerHTML = `<section class="agent-demo-card${key === 'service' ? ' tall' : ''}"><h4>${demo.title}</h4><video controls preload="metadata" playsinline src="${demo.src}"></video><p class="demo-caption">${demo.caption}</p></section>`;
+    AGENT_PANEL.innerHTML = `<section class="agent-demo-card${key === 'service' ? ' tall' : ''}"><h4>${TS(demo.title)}</h4><video controls preload="metadata" playsinline src="${demo.src}"></video><p class="demo-caption">${TS(demo.caption)}</p></section>`;
     AGENT_PANEL.setAttribute('aria-labelledby', `agent-tab-${key}`);
     document.querySelectorAll('[data-agent-demo]').forEach(button => {
       const selected = button.dataset.agentDemo === key;
@@ -306,4 +310,5 @@ if (DEMO_ROOT) {
   document.querySelectorAll('[data-agent-demo]').forEach(button => button.addEventListener('click', () => renderAgentDemo(button.dataset.agentDemo)));
   renderDemo('duplex');
   renderAgentDemo('cockpit');
+  window.__rerenderers.push(() => { renderDemo(currentDemo); renderAgentDemo(currentAgent); });
 }

@@ -7,11 +7,12 @@
   <meta name="description" content="Qwen-Audio-3.1-Realtime — towards reliable agentic voice interaction. Explore spoken intelligence, executable actions, and conversational coordination.">
   <title>Qwen-Audio-3.1-Realtime · Beyond conversation</title>
   <link rel="icon" href="assets/qwen-logo.png" type="image/png">
-  <link rel="stylesheet" href="styles.css?v=15">
+  <link rel="stylesheet" href="styles.css?v=16">
   <link rel="stylesheet" href="overview.css?v=7">
   <link rel="stylesheet" href="demo.css?v=40">
-  <script src="app.js?v=40" defer></script>
-  <script src="demo.js?v=32" defer></script>
+  <script src="i18n.js?v=18" defer></script>
+  <script src="app.js?v=44" defer></script>
+  <script src="demo.js?v=35" defer></script>
 </head>
 <body>
   <a class="skip-link" href="#main">Skip to content</a>
@@ -19,8 +20,9 @@
     <a class="brand" href="#" aria-label="Qwen Audio home"><img class="brand-logo" src="assets/qwen-logo.png" alt=""><span>Qwen-Audio-3.1-Realtime</span></a>
     <button class="menu-toggle" aria-expanded="false" aria-controls="navigation">Menu <span aria-hidden="true">☰</span></button>
     <nav id="navigation" aria-label="Main navigation">
-      <a href="#benchmarks">Benchmarks</a><a href="#demos">Demos</a><a href="#agent">Voice Agent</a><a href="#report">Technical Report</a><a href="https://modelstudio.console.alibabacloud.com/ap-southeast-1/model/market/detail/qwen-audio-3.1-realtime-plus?serviceSite=international&amp;ref=list" target="_blank" rel="noopener">Model Studio</a><a href="https://github.com/QwenAudio/qwen-audio-agent" target="_blank" rel="noopener">Harness GitHub</a>
+      <a href="#benchmarks">Benchmarks</a><a href="#demos">Demos</a><a href="#agent">Voice Agent</a><a href="https://github.com/QwenAudio/Fun-Audio-Chat/blob/main/Qwen-Audio-3.1-Realtime-Technical-Report.pdf" target="_blank" rel="noopener">Technical Report</a><a href="https://modelstudio.console.alibabacloud.com/ap-southeast-1/model/market/detail/qwen-audio-3.1-realtime-plus?serviceSite=international&amp;ref=list" target="_blank" rel="noopener">Model Studio</a><a href="https://github.com/QwenAudio/qwen-audio-agent" target="_blank" rel="noopener">Harness GitHub</a>
     </nav>
+    <button id="lang-toggle" class="lang-toggle" aria-pressed="false">中文</button>
     <a class="nav-cta" href="#report">Technical overview <span aria-hidden="true">↗</span></a>
   </header>
   <main id="main">
@@ -56,7 +58,7 @@
     </section>
 
     <section id="demos" class="section demo-section"><div class="wrap">
-      <div class="section-heading"><span class="eyebrow">SEE IT IN A REAL CONVERSATION</span><h2>Four conversations.<br>One continuous interaction.</h2><p>Recorded sessions covering language switching, turn-taking with several<br class="desktop-break"> speakers, tool execution, and spoken expression.</p></div>
+      <div class="section-heading"><span class="eyebrow">SEE IT IN A REAL CONVERSATION</span><h2>Four conversations.<br>One continuous interaction.</h2><p>Recorded sessions covering multi-party and semantic-control full-duplex interaction,<br class="desktop-break"> character and emotional expression, tool execution, and smooth multi-turn multilingual switching.</p></div>
       <div class="demo-tabs" role="tablist" aria-label="Demo category">
         <button role="tab" id="demo-tab-duplex" aria-controls="demo-panel" aria-selected="true" data-demo="duplex">Full-duplex interaction<span>Multi-party · semantic control</span></button>
         <button role="tab" id="demo-tab-persona" aria-controls="demo-panel" aria-selected="false" tabindex="-1" data-demo="persona">Persona &amp; empathy<span>Character · emotional response</span></button>
