@@ -143,9 +143,9 @@
     '#tech h2': '技术总览',
     '#tech-tab-interaction': '交互框架',
     '#tech-tab-model': '模型框架',
-    '#tech-tab-posttrain': '后训练流水线',
-    '#tech-tab-selfevolve': '自进化环境流水线',
-    '#tech-tab-harness': '持久化语音 Harness 架构',
+    '#tech-tab-posttrain': '后训练',
+    '#tech-tab-selfevolve': '自进化环境',
+    '#tech-tab-harness': '语音智能体Harness',
     '#tech-tab-asyncturns': '跨对话轮次的异步任务',
   };
 
@@ -163,6 +163,7 @@
 
   function applyStatic() {
     applyOverview();
+    document.querySelectorAll('.eyebrow').forEach(el => { el.style.display = window.LANG === 'zh' ? 'none' : ''; });
     Object.keys(ZH).forEach(selector => {
       const el = document.querySelector(selector);
       if (!el) return;
