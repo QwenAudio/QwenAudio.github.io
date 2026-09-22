@@ -64,7 +64,7 @@ const DEMOS = {
       {
         id: 'semantic', label: 'Semantic Control', src: 'assets/demo/semantic_stereo_1.mp3',
         caption: 'The user asks the assistant to hold; the assistant waits through the pauses and resumes when released.',
-        user: [[0.9, 5.9], [12.4, 13.0], [15.0, 16.0], [18.5, 24.8], [31.9, 36.6], [38.6, 43.5], [46.7, 52.6], [55.3, 56.8]],
+        user: [[0.9, 5.9], [12.4, 13.0], [15.9, 16.5], [18.5, 24.8], [31.9, 36.6], [38.6, 43.5], [46.7, 52.6], [55.3, 56.8]],
         userCats: ['addressed', 'backchannel', 'backchannel', 'interruption', 'addressed', 'addressed', 'addressed', 'addressed'],
         agent: [[7.0, 19.4], [26.7, 30.9], [58.7, 98.0]], duration: 98.0,
         annos: [{seg: 3, text: 'Semantic control · setup'}, {seg: 7, text: 'Semantic control · turn release'}],
