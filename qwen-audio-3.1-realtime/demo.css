@@ -1,9 +1,9 @@
 .demo-section{background:linear-gradient(180deg,#fbfaff,#f6f3fc);border-block:1px solid #ece5f6}
-.demo-tabs{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;margin-bottom:30px}
-.demo-tabs button{border:1px solid #e2d9f0;background:#fff;color:#645a75;border-radius:9px;padding:13px 20px;font-size:13px;font-weight:600;transition:all .18s}
+.demo-tabs{display:flex;flex-wrap:wrap;gap:12px;justify-content:center;margin-bottom:34px}
+.demo-tabs button{border:1px solid #e2d9f0;background:#fff;color:#645a75;border-radius:10px;padding:17px 28px;font-size:16px;font-weight:600;transition:all .18s}
 .demo-tabs button:hover{border-color:#c4b0ea;color:var(--purple-dark)}
 .demo-tabs button[aria-selected=true]{background:var(--purple);border-color:var(--purple);color:#fff;box-shadow:0 6px 18px -8px #6d48e5a1}
-.demo-tabs button span{display:block;font-size:11px;font-weight:500;opacity:.72;margin-top:4px;letter-spacing:.4px}
+.demo-tabs button span{display:block;font-size:13px;font-weight:500;opacity:.72;margin-top:6px;letter-spacing:.4px}
 #demo-panel{border:1px solid #e6dff1;background:#fff;border-radius:14px;padding:32px;box-shadow:0 20px 60px -40px #5d3f8c5c}
 .demo-header{max-width:760px;margin-bottom:26px}
 .demo-header h3{font-size:24px;font-weight:650}
