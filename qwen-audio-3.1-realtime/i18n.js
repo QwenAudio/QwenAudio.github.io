@@ -109,7 +109,7 @@
     '#tab-context': '长上下文',
     '.evidence-note p': '除非另有说明，GPT-Realtime-2 均在 low effort 模式下运行。评测结果基于技术报告所述配置，并非严格受控的消融实验或统计显著性检验；缺失值不计为 0。S2T 结果仅衡量语音转文本的准确率，不评估语音合成质量。',
     '#demos .eyebrow': '真实交互演示',
-    '#demos h2': '四种能力<br>一段持续对话',
+    '#demos h2': '四种能力<br>一气呵成',
     '#demos .section-heading > p': '每项能力配一段或多段真实录音：多方与语义控制的全双工交互、<br class="desktop-break">人设与共情、工具执行，以及顺滑的多轮多语切换。',
     '#demo-tab-duplex': '全双工交互<span>多方 · 语义控制</span>',
     '#demo-tab-persona': '角色与共情<span>人设 · 情感回应</span>',
