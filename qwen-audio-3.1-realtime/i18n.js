@@ -146,7 +146,7 @@
     '#tech-tab-posttrain': '后训练',
     '#tech-tab-selfevolve': '自进化环境',
     '#tech-tab-harness': '语音智能体Harness',
-    '#tech-tab-asyncturns': '跨对话轮次的异步任务',
+    '#tech-tab-asyncturns': '跨轮次异步框架',
   };
 
   const OVERVIEW_EN = 'assets/overview.svg?v=25';
