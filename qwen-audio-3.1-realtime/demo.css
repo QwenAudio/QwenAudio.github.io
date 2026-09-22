@@ -44,7 +44,7 @@ video{display:block;margin:0 auto;width:auto;height:auto;max-width:100%;max-heig
 .timeline-name.user{background:#efe9fb;color:#6b4fae}
 .timeline-name.agent{background:var(--purple);color:#fff}
 .timeline-track{position:relative;height:21px;flex:1;background:#f4f1f9;border-radius:4px;overflow:hidden}
-.lane-block{position:absolute;top:0;bottom:0;border-radius:4px}
+.lane-block{position:absolute;top:0;bottom:0;border-radius:4px}.track-playhead{position:absolute;top:0;bottom:0;width:2px;margin-left:-1px;background:#7052d6;z-index:3;pointer-events:none;box-shadow:0 0 6px #7052d680}
 .lane-block.user.cat-talking{background:#cc79a7}
 .lane-block.user.cat-background{background:#a0a6ad}
 .lane-block.user.cat-addressed{background:#0072b2}
