@@ -61,7 +61,7 @@ function renderBenchmarks(category) {
   const data = benchmarks[category];
   charts.innerHTML = data.metrics.map(m => {
     const top = axisTop(m);
-    return `<article class="chart-card"><h3>${m.name}</h3><p class="chart-subtitle">${m.lower ? T('↓ Lower is better', '↓ 越低越好') : T('↑ Higher is better', '↑ 越高越好')} · ${m.unit === '/5' ? T('1–5 score', '1–5 分') : m.unit}</p><div class="col-plot"><div class="col-axis" aria-hidden="true"><span>${top}</span><span>${top / 2}</span><span>0</span></div><div class="col-set">${m.values.map((value, index) => {
+    return `<article class="chart-card"><h3>${m.name} ${m.lower ? '↓' : '↑'}</h3><div class="col-plot"><div class="col-axis" aria-hidden="true"><span>${top}</span><span>${top / 2}</span><span>0</span></div><div class="col-set">${m.values.map((value, index) => {
     if (value === null) return '';
     const pct = value / top * 100;
     const badge = badgeMarkup(index);
