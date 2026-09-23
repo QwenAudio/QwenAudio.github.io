@@ -292,7 +292,7 @@ if (DEMO_ROOT) {
     DEMO_ROOT.querySelectorAll('audio, video').forEach(player => { if (player !== event.target) player.pause(); });
   }, true);
   const AGENT_DEMOS = {
-    service: {title: 'Customer service', src: 'assets/agent/customer-service.mp4', caption: 'Full-session recording · customer service scenario.'},
+    service: {title: 'Customer service', src: 'assets/agent/customer-service.mp4?v=2', caption: 'Full-session recording · customer service scenario.'},
     office: {title: 'Office', src: 'assets/agent/office.mp4', caption: 'Full-session recording · office productivity scenario.'},
     cockpit: {title: 'Smart cockpit', src: 'assets/agent/smart-cockpit.mp4', caption: 'Full-session recording · in-car smart cockpit scenario.'}
   };
