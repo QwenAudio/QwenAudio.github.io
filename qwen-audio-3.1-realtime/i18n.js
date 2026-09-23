@@ -139,6 +139,7 @@
     '.report-credit': 'Alibaba Token Foundry · 阿里巴巴集团',
     '.footer > span': 'Qwen-Audio-3.1-Realtime · 技术报告预览',
     '.footer > a:last-child': '回到顶部 ↑',
+    '.agent-report-link .button': '语音智能体技术报告 <span aria-hidden="true">↗</span>',
     '#tech .eyebrow': '技术内幕',
     '#tech h2': '技术总览',
     '#tech-tab-interaction': '交互框架',
