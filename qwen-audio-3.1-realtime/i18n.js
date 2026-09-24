@@ -75,8 +75,8 @@
     'Chart view': '图表视图',
     'Interaction Framework': '交互框架',
     'Model Framework': '模型框架',
-    'Post-Training Pipeline': '后训练流水线',
-    'Self-Evolving Environment Pipeline': '自进化环境流水线',
+    'Post-Training': '后训练',
+    'Self-Evolving Environment': '自进化环境',
     'Persistent Voice Harness Architecture': '持久化语音 Harness 架构',
     'Asynchronous Tasks Across Conversation Turns': '跨对话轮次的异步任务',
   };
