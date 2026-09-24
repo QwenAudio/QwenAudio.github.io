@@ -134,12 +134,12 @@ function renderLegend() {
 renderLegend();
 renderBenchmarks(activeCategory);
 const TECH_FIGURES = {
-  interaction: {title: 'Interaction Framework', src: 'assets/tech-interaction-framework.png'},
-  model: {title: 'Model Framework', src: 'assets/tech-model-framework.png'},
-  posttrain: {title: 'Post-Training Pipeline', src: 'assets/tech-post-training.png'},
-  selfevolve: {title: 'Self-Evolving Environment Pipeline', src: 'assets/tech-self-evolving.png'},
-  harness: {title: 'Persistent Voice Harness Architecture', src: 'assets/tech-voice-harness.png'},
-  asyncturns: {title: 'Asynchronous Tasks Across Conversation Turns', src: 'assets/tech-async-turns.png'}
+  interaction: {title: 'Interaction Framework', src: 'assets/tech-interaction-framework.png?v=2'},
+  model: {title: 'Model Framework', src: 'assets/tech-model-framework.png?v=2'},
+  posttrain: {title: 'Post-Training Pipeline', src: 'assets/tech-post-training.png?v=2'},
+  selfevolve: {title: 'Self-Evolving Environment Pipeline', src: 'assets/tech-self-evolving.png?v=2'},
+  harness: {title: 'Persistent Voice Harness Architecture', src: 'assets/tech-voice-harness.png?v=2'},
+  asyncturns: {title: 'Asynchronous Tasks Across Conversation Turns', src: 'assets/tech-async-turns.png?v=2'}
 };
 let activeTech = 'interaction';
 function renderTech(key) {
