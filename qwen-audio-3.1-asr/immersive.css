@@ -1,0 +1,65 @@
+/* One viewport, one capability. The article below keeps its existing design and content. */
+.visually-hidden{position:absolute;width:1px;height:1px;margin:-1px;padding:0;overflow:hidden;clip-path:inset(50%);white-space:nowrap;border:0}
+body{overflow-x:clip}.page-grid{display:none}html{scroll-padding-top:90px}
+.site-header{position:absolute;top:0;left:3.8%;right:3.8%;width:auto;height:84px;border-color:#62418b24;color:#271f45;z-index:30;gap:20px}
+.site-header .brand{flex-shrink:0}.site-header .brand strong{font-size:19px;letter-spacing:-.045em}.site-header .brand img{width:32px;height:32px}
+.site-header .site-nav{margin-left:auto;gap:18px}.site-header .site-nav a{font-size:12px}.site-header .site-nav a:nth-child(-n+5){display:none}.site-header .site-nav .nav-button{background:transparent;border:1px solid #947ab840;color:#49306e;box-shadow:none}
+.site-header .locale-toggle{background:#ffffff70;border-color:#8f77ad45}.site-header .menu-button{color:#49306e}
+.immersive-tour{position:relative;height:100vh;height:100svh;min-height:650px;width:100%;isolation:isolate;overflow:hidden;background:#f1ecfc;color:#29203f;--chapter-progress:0;--entry:1}
+.tour-atmosphere{position:absolute;inset:0;z-index:-1;overflow:hidden;background:radial-gradient(ellipse at 76% 44%,#fff 4%,#eee6fb 57%,#ded0f3 100%)}
+.tour-horizon{position:absolute;left:0;right:0;top:67%;height:65%;background:repeating-linear-gradient(90deg,transparent 0,transparent 8.3%,#9579b918 8.35%,transparent 8.45%),repeating-linear-gradient(0deg,transparent 0,transparent 64px,#9579b918 65px,transparent 66px);transform:perspective(650px) rotateX(67deg);transform-origin:50% 0;mask-image:linear-gradient(transparent,#000 45%,transparent)}
+.tour-orbit-line{position:absolute;width:98vw;height:98vw;left:25%;top:calc(50% - 49vw);border:1px solid #7256a31b;border-radius:50%;box-shadow:0 0 0 110px #9981c408,0 0 0 220px #9981c408}
+.tour-caption{position:absolute;left:4%;top:26%;width:25%;z-index:6;pointer-events:none}.tour-caption a{pointer-events:auto}
+.tour-kicker{display:flex;align-items:center;gap:11px;color:#66429f;font-size:11px;font-weight:700;letter-spacing:.07em;line-height:1.5;white-space:nowrap}.tour-kicker i{display:block;width:20px;height:1px;background:#8664b2}.tour-kicker #tour-number{font-variant-numeric:tabular-nums}
+.tour-caption h2{font-size:clamp(38px,4.3vw,78px);line-height:1.1;letter-spacing:-.045em;font-weight:690;margin:23px 0 22px;text-wrap:balance;color:#2d2049}
+.tour-caption p{font-size:16px;line-height:1.75;margin:0;max-width:310px;color:#6c5a7e;text-wrap:pretty}.tour-caption .tour-scope{font-size:12px;line-height:1.6;color:#77658b;margin-top:26px;max-width:280px}
+.tour-enter{display:inline-flex;align-items:center;justify-content:space-between;gap:34px;min-height:49px;padding:11px 19px;margin-top:27px;background:#6d43d8;color:white;border-radius:30px;text-decoration:none;font-size:14px;font-weight:600;box-shadow:0 8px 25px #6042a62b;transition:transform .2s,background .2s}
+.tour-enter:hover{background:#5730bc;transform:translateY(-2px)}.tour-enter>span:last-child{font-size:21px;font-weight:400}
+.tour-visual{position:absolute;left:28%;right:1.5%;top:14%;bottom:20%;z-index:3;min-width:0;perspective:1300px;transform:translateY(calc((1 - var(--entry))*26px));opacity:calc(.3 + var(--entry)*.7)}
+.tour-visual[hidden]{display:none!important}.tour-signature{position:absolute;bottom:20%;left:4%;display:flex;align-items:center;gap:9px;color:#806c9b;font-size:12px;letter-spacing:-.02em;z-index:2}.tour-signature img{width:34px;filter:drop-shadow(0 5px 4px #947bbb30)}
+.tour-chapters{position:absolute;bottom:76px;left:4%;right:4%;display:grid;grid-template-columns:repeat(8,1fr);gap:14px;z-index:10}
+.tour-chapter{position:relative;text-align:left;border:0;background:transparent;padding:16px 0 10px;min-height:60px;color:#89769f;cursor:pointer;overflow:hidden;transition:color .25s}.tour-chapter::before,.tour-chapter::after{position:absolute;content:"";top:0;left:0;right:0;height:2px;background:#aa94c631}.tour-chapter::after{background:#7444dc;transform:scaleX(0);transform-origin:left}.tour-chapter.is-active::after{transform:scaleX(var(--chapter-progress))}.tour-chapter.is-active{color:#59359d}.tour-chapter:hover{color:#502485}.tour-chapter small{font-size:11px;margin-right:7px;font-variant-numeric:tabular-nums}.tour-chapter b{font-size:13px;white-space:nowrap;font-weight:600}
+.tour-footer{position:absolute;left:4%;right:4%;bottom:20px;height:36px;display:flex;align-items:center;gap:24px;z-index:10;color:#725c90;font-size:12px}
+.tour-scroll{display:flex;gap:22px;align-items:center;color:#624a82;text-decoration:none}.tour-scroll b{font-size:20px;font-weight:400}.tour-status{margin-left:auto;color:#886ca9}.tour-status::before{display:inline-block;content:"";width:5px;height:5px;border-radius:50%;background:#9269d4;margin-right:8px}.tour-controls{display:flex;gap:7px}.tour-controls button{display:flex;align-items:center;justify-content:center;gap:16px;background:#ffffff60;border:1px solid #9980ba40;color:#604282;border-radius:20px;min-height:34px;padding:5px 14px;font-size:12px;cursor:pointer}.tour-controls #tour-replay{width:36px;font-size:21px;padding:0}.tour-controls button:hover{background:white}
+.tour-chapter:focus-visible,.tour-enter:focus-visible,.tour-controls button:focus-visible{outline:3px solid #8056d4;outline-offset:4px}.tour-is-paused .tour-status::before{background:#93879e}
+.intro31.monument-evidence{padding-top:60px}.intro31 .release-strip31{margin-bottom:40px}
+@media(min-width:1700px){.tour-caption{width:24%;top:27%}.tour-visual{left:27%;right:2%;top:12%;bottom:18%}.tour-caption p{font-size:19px;max-width:370px}.tour-caption .tour-scope{font-size:13px;max-width:340px}.tour-chapter b{font-size:16px}.tour-chapters{bottom:86px}.tour-footer{bottom:25px}}
+@media(max-width:1100px){.site-header .site-nav{display:none}.site-header .menu-button{display:block;margin-left:auto}.site-header .site-nav.open{display:flex;position:absolute;top:74px;right:0;flex-direction:column;background:#fff;border-radius:16px;padding:18px;box-shadow:0 15px 50px #56357b25;width:210px}.site-header .site-nav.open a{display:block;font-size:14px}.tour-caption{width:27%;top:25%}.tour-caption h2{font-size:43px}.tour-caption p{font-size:14px}.tour-visual{left:30%;right:1%;top:18%;bottom:21%}.tour-chapters{gap:9px}.tour-chapter small{display:block;font-size:10px;margin-bottom:4px}.tour-chapter b{font-size:12px}.tour-chapter{padding-top:12px}.tour-signature{bottom:22%}}
+@media(max-width:700px){
+ .site-header{left:5%;right:5%;height:68px;gap:7px}.site-header .brand strong{font-size:15px;letter-spacing:-.045em}.site-header .brand img{width:25px;height:25px;margin-right:5px}.site-header .locale-toggle{font-size:10px;margin-left:1px;padding:6px}.site-header .menu-button{font-size:10px;padding:6px}.site-header .site-nav.open{top:64px}
+ .immersive-tour{min-height:740px}.tour-caption{left:6%;right:6%;top:11%;width:auto}.tour-kicker{font-size:10px;gap:9px}.tour-caption h2{font-size:38px;line-height:1.16;letter-spacing:-.04em;margin:12px 0 8px}.tour-caption h2 br{display:none}.tour-caption p{font-size:13px;line-height:1.55;max-width:none}.tour-caption .tour-scope{display:none}.tour-enter{position:fixed;visibility:hidden}.tour-caption .tour-enter{position:absolute;top:calc(100svh - 280px);left:0;margin:0;min-height:40px;font-size:12px;visibility:visible;gap:22px;padding:8px 15px}
+ .tour-caption .tour-enter{top:calc(100svh - 302px)}.tour-visual{left:0;right:0;top:29%;bottom:25%}.tour-signature{display:none}.tour-chapters{left:6%;right:6%;bottom:71px;grid-template-columns:repeat(4,1fr);row-gap:8px;column-gap:12px}.tour-chapter{min-height:34px;padding:7px 0 0}.tour-chapter small{display:none}.tour-chapter b{font-size:12px}.tour-footer{left:6%;right:6%;bottom:17px;gap:10px}.tour-scroll{gap:10px;font-size:10px}.tour-status{display:none}.tour-controls{margin-left:auto}.tour-controls button{font-size:11px;gap:9px;padding:4px 10px}.tour-controls #tour-replay{width:30px}.tour-footer .tour-scroll b{font-size:17px}.tour-orbit-line{width:135vw;height:135vw;left:-15%;top:24%}
+}
+@media(max-height:760px) and (min-width:701px){.immersive-tour{min-height:620px}.tour-caption{top:22%}.tour-caption h2{font-size:clamp(36px,4vw,58px);margin:16px 0}.tour-caption p{font-size:14px}.tour-caption .tour-scope{margin-top:18px}.tour-enter{margin-top:20px}.tour-visual{top:15%;bottom:22%}.tour-signature{bottom:22%}}
+@media(prefers-reduced-motion:reduce){.tour-visual,.tour-enter,.tour-chapter{transition:none!important}.tour-horizon{opacity:.5}}
+/* Anchor child renderers inside the graphic safe area, never over the title. */
+#tour-geography,#tour-semantic{position:absolute;inset:14% 1.5% 20% 28%;width:auto;height:auto}
+#tour-semantic{cursor:pointer}#tour-semantic:focus-visible{outline:2px solid #9b7bd3;outline-offset:3px;border-radius:20px}
+.immersive-tour{min-height:0}
+.site-header .menu-button{display:block;margin-left:auto;font-size:12px;padding:8px 13px;background:#ffffff80;border-color:#a791c43d}
+.site-header .site-nav{display:none}
+.site-header .site-nav.open{display:flex;position:absolute;top:73px;right:0;flex-direction:column;align-items:stretch;width:230px;padding:20px;border:1px solid #e1d5ef;background:#fffcfff5;border-radius:18px;box-shadow:0 18px 55px #4c277826;backdrop-filter:blur(20px)}
+.site-header .site-nav.open a{display:block;font-size:14px;padding:7px}
+@media(max-width:1100px) and (min-width:701px){#tour-geography,#tour-semantic{inset:18% 1% 21% 30%}}
+@media(max-height:760px) and (min-width:701px){#tour-geography,#tour-semantic{inset:15% 1.5% 22% 28%}}
+@media(max-width:700px){#tour-geography,#tour-semantic{inset:29% 0 220px 0}.tour-caption .tour-enter{top:calc(89svh - 201px)}.site-header .menu-button{font-size:10px;padding:6px}.site-header .site-nav.open{top:64px}}
+@media(max-width:700px) and (max-height:730px){.tour-caption h2{font-size:31px;margin:9px 0 7px}.tour-caption p{font-size:12px}.tour-kicker{font-size:9px}.tour-chapters{bottom:64px}.tour-footer{bottom:10px}.tour-caption .tour-enter{top:calc(89svh - 191px)}}
+
+/* The original Qwen sculpture is a persistent brand anchor, not a chapter graphic. */
+.tour-caption{top:clamp(96px,13.5svh,155px)}
+.tour-logo{position:relative;width:clamp(110px,11vw,180px);height:clamp(110px,11vw,180px);margin:-6px 0 10px -9px;isolation:isolate}
+.tour-logo canvas{position:absolute;inset:0;width:100%;height:100%;display:block;filter:drop-shadow(0 7px 7px #65438724)}
+.tour-logo-fallback{position:absolute;inset:12%;width:76%;height:76%;object-fit:contain}
+.tour-logo.has-webgl .tour-logo-fallback{visibility:hidden}
+.tour-logo:not(.has-webgl) canvas{visibility:hidden}
+.tour-caption h2{margin-top:18px}
+@media(max-height:760px) and (min-width:701px){.tour-logo{width:112px;height:112px;margin-bottom:7px}.tour-caption h2{margin:15px 0}.tour-caption .tour-scope{margin-top:16px}}
+@media(max-width:700px){
+ .tour-caption{top:76px}.tour-logo{width:54px;height:54px;margin:0 0 8px -5px}
+ .tour-kicker{position:absolute;left:62px;top:21px;white-space:normal;font-size:9px}
+ .tour-caption h2{font-size:32px;line-height:1.12;margin:6px 0 8px}
+ .tour-caption p{font-size:12px}
+ #tour-geography,#tour-semantic{top:calc(29% + 38px)}
+ .tour-caption .tour-enter{top:calc(100svh - 277px)}
+}
+@media(max-width:700px) and (max-height:730px){.tour-logo{width:46px;height:46px;margin-bottom:5px}.tour-kicker{left:53px;top:16px}.tour-caption h2{font-size:29px;margin:5px 0 6px}.tour-caption .tour-enter{top:calc(100svh - 267px)}}

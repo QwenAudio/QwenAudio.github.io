@@ -29,7 +29,7 @@
       wrapper.querySelector('.chart-legend31')?.remove();
       const legend = document.createElement('div');
       legend.className = 'chart-legend31';
-      [...labels, 'Qwen-Audio-3.1-ASR'].forEach((label, i) => {
+      [...labels, name === 'entity-recall.png' ? 'Qwen-Audio-3.0-ASR' : 'Qwen-Audio-3.1-ASR'].forEach((label, i) => {
         const item = document.createElement('span');
         item.style.setProperty('--key-color', ['#a996df', '#9ba0b6', '#7047df'][i]);
         item.textContent = label;
