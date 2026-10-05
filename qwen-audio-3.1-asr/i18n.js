@@ -22,9 +22,58 @@
     'Sichuan dialect':'四川话','Shanxi dialect':'山西话','Henan dialect':'河南话','Jinan dialect':'济南话','Cantonese':'粤语','Shaanxi dialect':'陕西话','Qingdao dialect':'青岛话','Shanghainese':'上海话','Nanchang dialect':'南昌话','Ningbo dialect':'宁波话','Hangzhou dialect':'杭州话','Wenzhounese':'温州话','Hunan dialect':'湖南话','Fujian dialect':'福建话','Suzhou dialect':'苏州话'
   };
 
+  // Translations for the current report; historical demos retain their attribution.
+  Object.assign(zh, {
+    "Category-macro entity recall": "领域宏平均实体召回率",
+    "Equal-weight mean of the 15 displayed domain recalls. At the report’s one-decimal precision, Qwen leads 9 domains, ties 2 and trails in 4. The radar shows each domain’s gap from its best system, not a shared raw-recall scale.": "对图中 15 个领域召回率等权平均。按报告一位小数的显示精度，Qwen 在 9 个领域领先、2 个并列、4 个落后。雷达距离表示各领域相对最优系统的差距，并非共用刻度的原始召回率。",
+    "Industry entity recall across 15 domains; radial distance shows the gap from each domain’s best system": "15 个领域的实体召回率；雷达距离表示与各领域最优系统的差距",
+    "15 domains": "15 个领域",
+    "Derived macro average": "由图中数值计算的宏平均",
+    "Native single-pass polishing raises readability from 2.53 to 3.44. Faithfulness is 3.44, compared with 3.51 for raw ASR and 3.47 for the cascaded rewrite. No additional model call is required.": "原生单次润色将可读性从 2.53 提升至 3.44。忠实度为 3.44，原始 ASR 为 3.51，级联改写为 3.47。无需额外调用模型。",
+    "First-token latency on H100": "H100 上的首 token 延迟",
+    "Algorithmic latency versus Chinese CER and English WER": "算法延迟与中文 CER、英文 WER 的关系",
+    "The low-latency configuration reports first-token latency below 200 ms and text-display latency below 300 ms, measured from the acoustic end of the corresponding spoken unit to its first displayed appearance. Algorithmic latency is a separate setting.": "低延迟配置的首 token 延迟低于 200 ms，文字显示延迟低于 300 ms；测量起点为对应语音单元的声学结束时刻，终点为其首次显示时刻。算法延迟是另一项配置。",
+    "Measured on H100": "在 H100 上测量",
+    "Chinese CER / English WER": "中文 CER / 英文 WER",
+    "Macro error rate": "宏平均错误率",
+    "Macro error rate (%) · Japanese, Thai and Korean use CER; other languages use WER.": "宏平均错误率（%）· 日语、泰语和韩语采用 CER，其他语言采用 WER。",
+    "Recall (%) · without → with hotword conditioning · Qwen column attributed to 3.0 in the report": "召回率（%）· 未使用热词 → 使用热词 · 报告中 Qwen 列标为 3.0",
+    "In the report’s hotword experiment, five of six P0 categories exceed 99% recall after conditioning; brand names reach 97.95%. The table attributes the Qwen experiment to Qwen-Audio-3.0-ASR.": "报告的热词实验中，6 个 P0 类别有 5 个在加入热词条件后超过 99% 召回率；品牌名为 97.95%。表格将该 Qwen 实验归于 Qwen-Audio-3.0-ASR。",
+    "Historical launch examples: entity recall (%) from the supplied 3.0 promotional material. This is a separate evaluation from the current report’s 15-domain industry benchmark and Message ASR results.": "历史发布示例：来自所提供 3.0 宣传材料的实体召回率（%）。该评测与当前报告的 15 领域行业基准及 Message ASR 评测不同。",
+    "Person names": "人名",
+    "Subject terms": "学科术语",
+    "Trending buzzwords": "流行热词",
+    "AI entities": "人工智能实体",
+    "Brand names": "品牌名",
+    "Product entities": "产品实体",
+    "Indonesian": "印尼语",
+    "Japanese": "日语",
+    "Thai": "泰语",
+    "Filipino": "菲律宾语",
+    "Vietnamese": "越南语",
+    "Korean": "韩语",
+    "Malay": "马来语",
+    "Spanish": "西班牙语",
+    "Portuguese": "葡萄牙语",
+    "French": "法语",
+    "Stock": "股票",
+    "Medical": "医疗",
+    "IT / programming": "IT / 编程",
+    "Public figures": "公众人物",
+    "Organizations": "组织机构",
+    "Animal husbandry": "畜牧",
+    "Industry": "工业",
+    "Culture": "文化",
+    "AI": "人工智能",
+    "Accuracy": "准确率",
+    "Accuracy (%)": "准确率（%）",
+    "Supported": "支持",
+    "Not supported": "不支持"
+  });
+
   const originals = new WeakMap();
   const attrOriginals = new WeakMap();
-  let locale = localStorage.getItem('qwen-asr31-locale') === 'zh-CN' ? 'zh-CN' : 'en';
+  let locale = localStorage.getItem('qwen-asr31-spatial-locale') === 'en' ? 'en' : 'zh-CN';
 
   function translated(value) {
     if (locale === 'en') return value;
@@ -74,7 +123,7 @@
     const toggle = document.querySelector('#locale-toggle');
     toggle.setAttribute('aria-label', locale === 'en' ? '切换为中文' : 'Switch to English');
     toggle.title = locale === 'en' ? '切换为中文' : 'Switch to English';
-    localStorage.setItem('qwen-asr31-locale', locale);
+    localStorage.setItem('qwen-asr31-spatial-locale', locale);
   }
 
   const observer = new MutationObserver(records => {
