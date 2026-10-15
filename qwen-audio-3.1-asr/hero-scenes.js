@@ -61,7 +61,7 @@ function markup() {
     <div class="hs-stream-route"><span>${copy('音频片段','AUDIO CHUNKS')}</span>${arrow}<img src="logo.svg" alt=""><span>Qwen-Audio-3.1-ASR</span>${arrow}<span>${copy('连续输出','INCREMENTAL TEXT')}</span></div>
     <div class="hs-stream-text" lang="zh-CN"><span></span><i aria-hidden="true"></i></div>
     <div class="hs-stream-progress"><span></span></div>
-    <p class="hs-footnote">${copy('出字过程为动画示意 · 点击进入原始录制的音画同步对比','Illustrative text animation · Open the original synchronized comparison below')}</p>
+    <p class="hs-footnote">${copy('出字过程为动画示意 · 点击查看 3.1 的流式评测与原始音频试听','Illustrative text animation · Explore 3.1 evaluations and the source audio below')}</p>
   </section>`;
 }
 

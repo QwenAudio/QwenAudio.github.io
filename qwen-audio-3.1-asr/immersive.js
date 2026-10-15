@@ -13,7 +13,7 @@ const chapters = [
  {id:'context',duration:8,short:['Context','上下文'],category:'CONTEXT & DOMAIN ENTITIES',title:['Keep context.<br>Get it right.','联系上下文，<br>听准专有词。'],description:['Historical context helps resolve names, brands, organizations and technical terms.','历史内容辅助纠正人名、品牌、组织和专业术语，让前后表达连贯。'],scope:['Illustrative correction from the supplied capability overview.','示例来源：所提供的模型能力总览图。'],cta:['Explore context corrections','查看上下文纠错'],target:'examples',feature:'context'},
  {id:'hotword',duration:8,short:['Hotwords','分层热词'],category:'HIERARCHICAL HOTWORDS',title:['Your terms.<br>In priority.','你的词汇，<br>优先识别。'],description:['P0 for high-confidence terms. P1 for a broader candidate pool.','P0 提供高置信优先词，P1 补充更广的候选集合。'],scope:['Illustrative P0 / P1 conditioning, not a live recognition request.','P0 / P1 条件控制示意，非实时识别请求。'],cta:['Explore hotword control','查看热词效果'],target:'examples',feature:'hotword'},
  {id:'polishing',duration:8,short:['Polishing','原生润色'],category:'NATIVE TRANSCRIPTION POLISHING',title:['Keep meaning.<br>Lose the noise.','去掉冗余，<br>保留本意。'],description:['Remove fillers, repetitions and self-corrections inside the recognition pass.','在识别过程中处理语气词、重复、自我修正与格式，让转写更易读。'],scope:['Capability illustration · Flash-Message / Flash / Next.','功能示意 · Flash-Message / Flash / Next。'],cta:['Watch native polishing','观看原生润色'],target:'examples',feature:'polishing'},
- {id:'streaming',duration:9,short:['Streaming','流式识别'],category:'FAST & STREAMING',title:['Speech flows.<br>Text follows.','话音流动，<br>文字随行。'],description:['Incremental transcripts as speech arrives. Explore the original side-by-side replay below.','语音不断输入，文字逐步呈现。进入下方观看原始流式对比回放。'],scope:['Emission animation is illustrative. The original comparison timing is preserved in the replay below.','首屏出字为功能示意；下方对比回放保留原始出字时序。'],cta:['Watch streaming playback','观看流式对比'],target:'streaming'}
+ {id:'streaming',duration:9,short:['Streaming','流式识别'],category:'FAST & STREAMING',title:['Speech flows.<br>Text follows.','话音流动，<br>文字随行。'],description:['Incremental transcripts as speech arrives. Explore the 3.1 report’s Message ASR evaluation below.','语音不断输入，文字逐步呈现。进入下方查看 3.1 Message ASR 的评测。'],scope:['Emission animation is illustrative. Quantitative results below follow the supplied 3.1 report.','首屏出字为功能示意；下方量化结果以本次 3.1 技术报告为准。'],cta:['Explore streaming ASR','查看流式识别'],target:'streaming'}
 ];
 let chapterIndex=0, elapsed=0, previous=0, running=true, visible=true, geo=null;
 let reduced=reducedQuery.matches, explicitPause=reduced, lastLang='', menuOpen=false;
@@ -91,7 +91,7 @@ function enter(c,selection=null){
   }
  }
  if(c.feature)$(`[data-example-tab="${c.feature}"]`)?.click();
- const target=selection?'listen':c.target;
+ const target=selection?'listen':c.id==='polishing'?'polishing':c.target;
  const element=document.getElementById(target);if(!element)return;
  history.replaceState(null,'',`#${target}`);
  // Preserve native scrolling; do not trap the wheel or manufacture a second scroll container.
